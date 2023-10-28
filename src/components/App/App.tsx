@@ -1,11 +1,5 @@
-import ContainerStyled from "../../styles/shared/ContainerStyled";
+import Layout from "../Layout/Layout";
 
-const App = (): React.ReactElement => {
-  return (
-    <ContainerStyled>
-      <h1>Rick y Morty</h1>
-    </ContainerStyled>
-  );
-};
+const App = (): React.ReactElement => <Layout />;
 
 export default App;
