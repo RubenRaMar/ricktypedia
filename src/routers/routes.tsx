@@ -9,7 +9,7 @@ const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        element: <Navigate to={`${routerPaths.characters}`} replace />,
+        element: <Navigate to={`${routerPaths.base}`} replace />,
       },
     ],
   },
