@@ -6,7 +6,7 @@ const NavegationMenu = (): React.ReactElement => {
   return (
     <NavegationMenuStyled>
       <ul>
-        <NavLink to={`${routerPaths.base}`}>Home</NavLink>
+        <NavLink to={`${routerPaths.characters}`}>Home</NavLink>
       </ul>
     </NavegationMenuStyled>
   );
