@@ -5,7 +5,7 @@ const MainHeaderStled = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ${themeColors.secondaryBackground};
+  background-color: ${themeColors.darkTransparent};
   border-bottom: 2px solid ${themeColors.tertiary};
   padding: 22px 30px;
 `;
