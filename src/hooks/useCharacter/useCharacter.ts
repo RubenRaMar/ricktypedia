@@ -2,17 +2,32 @@ import { useCallback } from "react";
 import axios from "axios";
 import { CharacterStateStructure } from "../../types";
 import { apiPaths } from "../../constants/paths/paths";
+import { useAppDispatch } from "../../store";
+import {
+  hideLoadingActionCreator,
+  showLoadingActionCreator,
+} from "../../store/ui/uiSlice";
 
 const useCharacter = () => {
+  const dispatch = useAppDispatch();
+
   const getCharacterList = useCallback(async (): Promise<
     CharacterStateStructure | undefined
   > => {
-    const { data: characterStateStructure } = await axios.get<
-      Promise<CharacterStateStructure>
-    >(apiPaths.character);
+    try {
+      dispatch(showLoadingActionCreator());
 
-    return characterStateStructure;
-  }, []);
+      const { data: characterStateStructure } = await axios.get<
+        Promise<CharacterStateStructure>
+      >(apiPaths.character);
+
+      dispatch(showLoadingActionCreator());
+
+      return characterStateStructure;
+    } catch (error) {
+      dispatch(hideLoadingActionCreator());
+    }
+  }, [dispatch]);
 
   return { getCharacterList };
 };
