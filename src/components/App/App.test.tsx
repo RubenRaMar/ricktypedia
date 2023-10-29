@@ -1,25 +1,23 @@
-import { screen } from "@testing-library/react";
-import App from "./App";
-import { Provider } from "react-redux";
-import { store } from "../../store";
+import { screen, waitFor } from "@testing-library/react";
 import renderWithProviders from "../../testUtils/renderWithProviders";
+import App from "./App";
 
 describe("Given an App component", () => {
   describe("When its rendered", () => {
-    test("Then it should show the text 'Rick y Morty", () => {
-      const expectedHeading = /rick y morty/i;
+    test("Then it should show the text 'Characters", async () => {
+      const expectedHeading = /characters/i;
 
       renderWithProviders({
-        ui: (
-          <Provider store={store}>
-            <App />
-          </Provider>
-        ),
+        ui: <App />,
       });
 
-      const text = screen.getByRole("heading", { name: expectedHeading });
+      await waitFor(() => {
+        const text = screen.getByRole("heading", {
+          name: expectedHeading,
+        });
 
-      expect(text).toBeInTheDocument();
+        expect(text).toBeInTheDocument();
+      });
     });
   });
 });

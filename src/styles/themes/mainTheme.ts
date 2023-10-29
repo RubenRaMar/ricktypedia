@@ -9,6 +9,7 @@ const mainTheme: DefaultTheme = {
     light: "#d0d0d0",
     lightGrey: "#8a8888",
     dark: "#000",
+    darkTransparent: "#070707bd",
     darkGrey: "#141414",
     mainBackground: "#0d0d0d",
     secondaryBackground: "#070707",
@@ -20,7 +21,7 @@ const mainTheme: DefaultTheme = {
   fontsSize: {
     small: `${pixelToRem(16)}`,
     medium: `${pixelToRem(20)}`,
-    large: `${pixelToRem(24)}`,
+    large: `${pixelToRem(40)}`,
   },
 };
 

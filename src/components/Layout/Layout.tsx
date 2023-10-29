@@ -7,9 +7,8 @@ const Layout = (): React.ReactElement => {
     <>
       <MainHeader />
       <ContainerStyled>
-        <h1>Rick y Morty</h1>
+        <Outlet />
       </ContainerStyled>
-      <Outlet />
     </>
   );
 };
