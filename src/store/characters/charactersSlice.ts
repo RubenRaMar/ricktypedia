@@ -39,12 +39,12 @@ const characterSlice = createSlice({
     ) => ({
       ...currentCharacterState,
       info: action.payload.info,
-      result: action.payload.results,
+      results: action.payload.results,
     }),
   },
 });
 
-export const { loadCharacters: loadCharacterActionCreator } =
+export const { loadCharacters: loadCharactersActionCreator } =
   characterSlice.actions;
 
 export const characterReduder = characterSlice.reducer;

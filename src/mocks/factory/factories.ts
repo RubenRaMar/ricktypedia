@@ -1,5 +1,5 @@
 import { Factory } from "fishery";
-import { CharacterStructure } from "../../types";
+import { CharacterStructure, InfoStructure } from "../../types";
 import { faker } from "@faker-js/faker";
 
 const characterFactory = Factory.define<CharacterStructure>(() => ({
@@ -16,8 +16,18 @@ const characterFactory = Factory.define<CharacterStructure>(() => ({
   origin: { name: faker.address.city() },
 }));
 
+const infoFactory = Factory.define<InfoStructure>(() => ({
+  count: faker.number.int(),
+  next: faker.string.alpha(),
+  prev: faker.string.alpha(),
+  pages: faker.number.int(),
+}));
+
 export const characterMockFactory = (data?: CharacterStructure) =>
   characterFactory.build(data);
+
+export const infoMockFactory = (data?: InfoStructure) =>
+  infoFactory.build(data);
 
 export const charactersMocksFactory = (
   totalMocks: number,
