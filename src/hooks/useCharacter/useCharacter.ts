@@ -21,7 +21,7 @@ const useCharacter = () => {
         Promise<CharacterStateStructure>
       >(apiPaths.character);
 
-      dispatch(showLoadingActionCreator());
+      dispatch(hideLoadingActionCreator());
 
       return characterStateStructure;
     } catch (error) {
