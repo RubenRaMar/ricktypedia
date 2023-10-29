@@ -12,8 +12,8 @@ const characterFactory = Factory.define<CharacterStructure>(() => ({
   type: faker.string.alpha(),
   species: faker.string.alpha(),
   status: faker.string.alpha(),
-  location: { name: faker.address.city() },
-  origin: { name: faker.address.city() },
+  location: { name: faker.location.city() },
+  origin: { name: faker.location.city() },
 }));
 
 const infoFactory = Factory.define<InfoStructure>(() => ({
