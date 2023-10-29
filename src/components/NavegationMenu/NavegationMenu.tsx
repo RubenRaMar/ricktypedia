@@ -1,12 +1,12 @@
 import { NavLink } from "react-router-dom";
-import routerPaths from "../../constants/routerPaths/routerPaths";
+import { partialsPaths } from "../../constants/paths/paths";
 import NavegationMenuStyled from "./NavegationMenuStyled";
 
 const NavegationMenu = (): React.ReactElement => {
   return (
     <NavegationMenuStyled>
       <ul>
-        <NavLink to={`${routerPaths.characters}`}>Home</NavLink>
+        <NavLink to={`${partialsPaths.character}`}>Home</NavLink>
       </ul>
     </NavegationMenuStyled>
   );

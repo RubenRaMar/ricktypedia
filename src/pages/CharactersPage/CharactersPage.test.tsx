@@ -1,5 +1,5 @@
 import { screen, waitFor } from "@testing-library/react";
-import renderWithProviders from "../../testUtils/renderWithProviders";
+import { renderWithProviders } from "../../testUtils/renderWithProviders";
 import CharactersPage from "./CharactersPage";
 
 describe("Given a CharactersPage page", () => {
