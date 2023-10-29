@@ -27,3 +27,7 @@ export interface CharacterStateStructure {
   results: CharacterStructure[];
   info: InfoStructure;
 }
+
+export interface UiStructure {
+  isLoading: boolean;
+}
