@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import NavegationMenu from "./NavegationMenu";
-import renderWithProviders from "../../testUtils/renderWithProviders";
+import { renderWithProviders } from "../../testUtils/renderWithProviders";
 
 describe("Given a NavegationMenu component", () => {
   describe("When its rendered", () => {

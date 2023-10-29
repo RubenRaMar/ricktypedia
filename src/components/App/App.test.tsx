@@ -1,6 +1,7 @@
 import { screen, waitFor } from "@testing-library/react";
-import renderWithProviders from "../../testUtils/renderWithProviders";
+import { renderWithProviders } from "../../testUtils/renderWithProviders";
 import App from "./App";
+import routes from "../../routers/routes";
 
 describe("Given an App component", () => {
   describe("When its rendered", () => {
@@ -9,6 +10,7 @@ describe("Given an App component", () => {
 
       renderWithProviders({
         ui: <App />,
+        preloadedRoutes: routes,
       });
 
       await waitFor(() => {

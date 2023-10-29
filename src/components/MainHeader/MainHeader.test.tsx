@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import renderWithProviders from "../../testUtils/renderWithProviders";
+import { renderWithProviders } from "../../testUtils/renderWithProviders";
 import MainHeader from "./MainHeader";
 import routes from "../../routers/routes";
 
