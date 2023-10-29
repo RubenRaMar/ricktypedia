@@ -4,9 +4,10 @@ import {
   configureStore,
 } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { characterReduder } from "./characters/charactersSlice";
 
 const rootReducer = combineReducers({
-  // insert the slices reducers
+  character: characterReduder,
 });
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
