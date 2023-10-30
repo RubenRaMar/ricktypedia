@@ -3,7 +3,9 @@ import "styled-components";
 interface ColorsStructure {
   primary: string;
   secondary: string;
+  secondaryTransparent: string;
   tertiary: string;
+  tertiaryTransparent: string;
   dark: string;
   darkGrey: string;
   darkTransparent: string;
