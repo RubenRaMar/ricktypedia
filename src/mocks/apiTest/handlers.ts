@@ -5,12 +5,14 @@ import { CharacterStateStructure } from "../../types";
 
 export const handlers = [
   http.get(apiPaths.character, () => {
-    return HttpResponse.json<CharacterStateStructure>(newCharactersStateMock);
+    return HttpResponse.json<CharacterStateStructure>(newCharactersStateMock, {
+      status: 200,
+    });
   }),
 ];
 
 export const errorHandlers = [
   http.get(apiPaths.character, () => {
-    return HttpResponse.json(undefined);
+    return HttpResponse.json(null, { status: 401 });
   }),
 ];
