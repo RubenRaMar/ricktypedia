@@ -5,7 +5,9 @@ const mainTheme: DefaultTheme = {
   colors: {
     primary: "#009a38",
     secondary: "#d2dc00",
+    secondaryTransparent: "#d2dc00eb",
     tertiary: "#7cbd28",
+    tertiaryTransparent: "#7cbd28d9",
     light: "#d0d0d0",
     lightGrey: "#8a8888",
     dark: "#000",
@@ -21,7 +23,7 @@ const mainTheme: DefaultTheme = {
   fontsSize: {
     small: `${pixelToRem(16)}`,
     medium: `${pixelToRem(20)}`,
-    large: `${pixelToRem(40)}`,
+    large: `${pixelToRem(30)}`,
   },
 };
 

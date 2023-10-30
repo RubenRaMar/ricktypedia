@@ -7,7 +7,8 @@ const MainHeaderStled = styled.header`
   align-items: center;
   background-color: ${themeColors.darkTransparent};
   border-bottom: 2px solid ${themeColors.tertiary};
-  padding: 22px 30px;
+  padding: 10px 30px;
+  box-shadow: 0px 0px 6px 1px ${themeColors.tertiary};
 `;
 
 export default MainHeaderStled;
