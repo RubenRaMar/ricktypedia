@@ -7,6 +7,10 @@ const characterSlice = createSlice({
   initialState: initialCharactersState,
   reducers: {
     loadCharacters: (
+      _currentCharacterState,
+      action: PayloadAction<CharacterStateStructure>
+    ) => action.payload,
+    showMoreCharacters: (
       currentCharacterState,
       action: PayloadAction<CharacterStateStructure>
     ) => ({
@@ -16,7 +20,9 @@ const characterSlice = createSlice({
   },
 });
 
-export const { loadCharacters: loadCharactersActionCreator } =
-  characterSlice.actions;
+export const {
+  loadCharacters: loadCharactersActionCreator,
+  showMoreCharacters: showMoreCharactersActionCreator,
+} = characterSlice.actions;
 
 export const characterReduder = characterSlice.reducer;
