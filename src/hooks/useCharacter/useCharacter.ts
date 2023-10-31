@@ -11,23 +11,26 @@ import {
 const useCharacter = () => {
   const dispatch = useAppDispatch();
 
-  const getCharacterList = useCallback(async (): Promise<
-    CharacterStateStructure | undefined
-  > => {
-    try {
-      dispatch(showLoadingActionCreator());
+  const getCharacterList = useCallback(
+    async (
+      path = apiPaths.character
+    ): Promise<CharacterStateStructure | undefined> => {
+      try {
+        dispatch(showLoadingActionCreator());
 
-      const { data: characterStateStructure } = await axios.get<
-        Promise<CharacterStateStructure>
-      >(apiPaths.character);
+        const { data: characterStateStructure } = await axios.get<
+          Promise<CharacterStateStructure>
+        >(path);
 
-      dispatch(hideLoadingActionCreator());
+        dispatch(hideLoadingActionCreator());
 
-      return characterStateStructure;
-    } catch (error) {
-      dispatch(hideLoadingActionCreator());
-    }
-  }, [dispatch]);
+        return characterStateStructure;
+      } catch (error) {
+        dispatch(hideLoadingActionCreator());
+      }
+    },
+    [dispatch]
+  );
 
   return { getCharacterList };
 };
