@@ -1,5 +1,10 @@
+import { apiPaths } from "../../constants/paths/paths";
 import { CharacterStateStructure } from "../../types";
-import { charactersMocksFactory, infoMockFactory } from "../factory/factories";
+import {
+  characterMockFactory,
+  charactersMocksFactory,
+  infoMockFactory,
+} from "../factory/factories";
 
 export const initialCharactersStateMock: CharacterStateStructure = {
   results: [
@@ -36,5 +41,32 @@ export const currentCharactersStateMock: CharacterStateStructure = {
 
 export const newCharactersStateMock: CharacterStateStructure = {
   results: charactersMocksFactory(4),
-  info: infoMockFactory(),
+  info: {
+    count: 0,
+    pages: 0,
+    next: apiPaths.character,
+    prev: "",
+  },
+};
+
+export const moreCharactersStateMock: CharacterStateStructure = {
+  results: charactersMocksFactory(4),
+  info: {
+    count: 0,
+    pages: 0,
+    next: "",
+    prev: "",
+  },
+};
+
+export const characterMock = characterMockFactory();
+
+export const getCharactersStateMock: CharacterStateStructure = {
+  results: charactersMocksFactory(4),
+  info: {
+    count: 0,
+    pages: 0,
+    next: "/character",
+    prev: "",
+  },
 };
