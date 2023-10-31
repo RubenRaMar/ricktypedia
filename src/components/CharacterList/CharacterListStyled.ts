@@ -3,6 +3,7 @@ import styled from "styled-components";
 const CharacterListStyled = styled.ul`
   display: grid;
   gap: 50px;
+  padding-block-end: 70px;
 
   @media (min-width: 650px) {
     max-width: 1200px;
