@@ -7,7 +7,7 @@ import {
 
 const CharacterCardStyled = styled.article`
   background-image: url(/images/bacgroundcard.webp);
-  background-size: contain;
+  background-size: cover;
   text-align: center;
   width: 280px;
   padding: 5px;
@@ -17,9 +17,13 @@ const CharacterCardStyled = styled.article`
 
   .character {
     &__name {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 66px;
+      padding: 6px 10px;
       font-size: ${themeFontsSize.medium};
       background-color: ${themeColors.secondaryTransparent};
-      padding: 6px 10px;
     }
 
     &__location {
@@ -33,10 +37,13 @@ const CharacterCardStyled = styled.article`
 
     &__data {
       display: flex;
+      height: 143px;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
+      font-weight: 600;
       border-radius: 0 0 10px 10px;
       padding: 10px;
+      padding-block-start: 8px;
       background-color: ${themeColors.tertiaryTransparent};
     }
 
