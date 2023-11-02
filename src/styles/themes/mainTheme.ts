@@ -5,9 +5,9 @@ const mainTheme: DefaultTheme = {
   colors: {
     primary: "#009a38",
     secondary: "#d2dc00",
-    secondaryTransparent: "#d2dc00eb",
+    secondaryTransparent: "#d2dc00de",
     tertiary: "#7cbd28",
-    tertiaryTransparent: "#7cbd28d9",
+    tertiaryTransparent: "#7cbd28c7",
     light: "#d0d0d0",
     lightGrey: "#8a8888",
     dark: "#000",

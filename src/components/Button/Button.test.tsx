@@ -1,7 +1,7 @@
 import userEvent from "@testing-library/user-event";
 import { screen } from "@testing-library/react";
 import { renderWithProviders } from "../../testUtils/renderWithProviders";
-import ButtonStyled from "./Button";
+import Button from "./Button";
 
 describe("Given a Button component", () => {
   const expectedTextButton = "Show More";
@@ -11,11 +11,10 @@ describe("Given a Button component", () => {
     test("Then it should show the text 'Show More'", () => {
       renderWithProviders({
         ui: (
-          <ButtonStyled
+          <Button
             isDisabled={true}
             actionOnClick={actionOnClick}
-            text={expectedTextButton}
-            modifier=""
+            content={expectedTextButton}
           />
         ),
       });
@@ -32,11 +31,11 @@ describe("Given a Button component", () => {
     test("Then it should invoked the actonOnClick function", async () => {
       renderWithProviders({
         ui: (
-          <ButtonStyled
+          <Button
             isDisabled={false}
             actionOnClick={actionOnClick}
-            text={expectedTextButton}
-            modifier="big"
+            content={expectedTextButton}
+            modifier="small"
           />
         ),
       });
