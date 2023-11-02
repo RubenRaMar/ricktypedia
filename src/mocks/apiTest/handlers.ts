@@ -1,6 +1,9 @@
 import { http, HttpResponse } from "msw";
 import { apiPaths } from "../../constants/paths/paths";
-import { newCharactersStateMock } from "../characters/characters";
+import {
+  emptyCharactersStateMock,
+  newCharactersStateMock,
+} from "../characters/characters";
 import { CharacterStateStructure } from "../../types";
 
 export const handlers = [
@@ -13,6 +16,9 @@ export const handlers = [
 
 export const errorHandlers = [
   http.get(apiPaths.character, () => {
-    return HttpResponse.json(null, { status: 401 });
+    return HttpResponse.json<CharacterStateStructure>(
+      emptyCharactersStateMock,
+      { status: 401 }
+    );
   }),
 ];

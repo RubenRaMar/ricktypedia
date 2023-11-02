@@ -9,6 +9,7 @@ interface ButtonProps {
   actionOnClick?: () => void;
   content: string | IconDefinition;
   isDisabled?: boolean;
+  label?: string;
 }
 
 const Button = ({
@@ -17,9 +18,11 @@ const Button = ({
   actionOnClick,
   content,
   isDisabled,
+  label,
 }: ButtonProps): React.ReactElement => {
   return (
     <ButtonStyled
+      aria-label={label}
       disabled={isDisabled}
       className={`button ${modifier ? `button--${modifier}` : ""}`}
       onClick={actionOnClick}

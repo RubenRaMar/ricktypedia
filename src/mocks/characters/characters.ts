@@ -61,8 +61,8 @@ export const moreCharactersStateMock: CharacterStateStructure = {
 
 export const characterMock = characterMockFactory();
 
-export const getCharactersStateMock: CharacterStateStructure = {
-  results: charactersMocksFactory(4),
+export const emptyCharactersStateMock: CharacterStateStructure = {
+  results: [],
   info: {
     count: 0,
     pages: 0,
