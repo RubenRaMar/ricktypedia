@@ -1,11 +1,13 @@
 import React from "react";
 import ButtonStyled from "./ButtonStyled";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IconDefinition } from "@fortawesome/fontawesome-common-types";
 
 interface ButtonProps {
   type?: "button" | "submit";
-  modifier?: string;
+  modifier?: "small";
   actionOnClick?: () => void;
-  text: string;
+  content: string | IconDefinition;
   isDisabled?: boolean;
 }
 
@@ -13,19 +15,21 @@ const Button = ({
   type = "button",
   modifier,
   actionOnClick,
-  text,
+  content,
   isDisabled,
 }: ButtonProps): React.ReactElement => {
-  const modifierButton = modifier ? `button--${modifier}` : "";
-
   return (
     <ButtonStyled
       disabled={isDisabled}
-      className={`button ${modifierButton}`}
+      className={`button ${modifier ? `button--${modifier}` : ""}`}
       onClick={actionOnClick}
       type={type}
     >
-      {text}
+      {typeof content === "string" ? (
+        content
+      ) : (
+        <FontAwesomeIcon icon={content} />
+      )}
     </ButtonStyled>
   );
 };
