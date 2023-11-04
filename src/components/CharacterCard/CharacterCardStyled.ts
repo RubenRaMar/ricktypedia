@@ -9,7 +9,6 @@ const CharacterCardStyled = styled.article`
   background-image: url(/images/bacgroundcard.webp);
   background-size: cover;
   text-align: center;
-  width: 280px;
   padding: 5px;
   border-radius: 10px;
   color: ${themeColors.dark};

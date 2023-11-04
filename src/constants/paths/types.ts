@@ -8,3 +8,8 @@ export interface PartialsPathsStructure {
 export interface ApiPathsStructure {
   character: string;
 }
+
+export interface CharacterPathsStructure {
+  characterDetails: string;
+  characterDetailsId: string;
+}

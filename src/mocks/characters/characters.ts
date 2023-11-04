@@ -17,13 +17,16 @@ export const initialCharactersStateMock: CharacterStateStructure = {
       gender: "",
       origin: {
         name: "",
+        url: "",
       },
       location: {
         name: "",
+        url: "",
       },
       image: "",
       episode: [],
       created: "",
+      url: "",
     },
   ],
   info: {

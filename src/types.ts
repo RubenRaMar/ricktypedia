@@ -1,5 +1,6 @@
 export interface NameStructure {
   name: string;
+  url: string;
 }
 
 export interface CharacterStructure {
@@ -14,6 +15,7 @@ export interface CharacterStructure {
   image: string;
   episode: string[];
   created: string;
+  url: string;
 }
 
 export interface InfoStructure {
