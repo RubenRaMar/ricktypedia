@@ -1,23 +1,19 @@
-import { useState } from "react";
-import SearchStyled from "./FormSearchStyled";
-import { useAppDispatch } from "../../store";
-import { loadCharactersActionCreator } from "../../store/characters/charactersSlice";
-import useCharacter from "../../hooks/useCharacter/useCharacter";
-import { apiPaths } from "../../constants/paths/paths";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { initialCharactersState } from "../../data/characters/characters";
+import FormSearchStyled from "./FormSearchStyled";
+import { useEffect, useState } from "react";
 import Button from "../Button/Button";
 
-const FormSearch = (): React.ReactElement => {
-  const dispatch = useAppDispatch();
-  const { getCharacterList } = useCharacter();
-  const [{ search }, setQuery] = useState({ search: "" });
+interface SearchCharactersProps {
+  onSearchChange: (value: string) => void;
+}
+
+const FormSearch = ({
+  onSearchChange,
+}: SearchCharactersProps): React.ReactElement => {
+  const [nameToSearch, setNameToSearch] = useState("");
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery((query) => ({
-      ...query,
-      [event.target.id]: event.target.value,
-    }));
+    setNameToSearch(event.target.value);
   };
 
   const handleSearchCharactersSubmit = async (
@@ -25,30 +21,27 @@ const FormSearch = (): React.ReactElement => {
   ) => {
     event.preventDefault();
 
-    const characters = await getCharacterList(
-      `${apiPaths.character}/?name=${search}`
-    );
-
-    if (!characters) {
-      dispatch(loadCharactersActionCreator(initialCharactersState));
-    }
-
-    if (characters) {
-      dispatch(loadCharactersActionCreator(characters));
-    }
+    onSearchChange(nameToSearch);
   };
 
+  useEffect(() => {
+    onSearchChange(nameToSearch);
+  }, [onSearchChange, nameToSearch]);
+
   return (
-    <SearchStyled onSubmit={handleSearchCharactersSubmit}>
+    <FormSearchStyled
+      aria-label="search-Form"
+      onSubmit={handleSearchCharactersSubmit}
+    >
       <label htmlFor="search">
         <input
           aria-label="search"
           type="text"
           id="search"
           onChange={handleOnChange}
-          value={search}
+          value={nameToSearch}
           autoComplete="off"
-          placeholder="Ricky, Morty, Jerry..."
+          placeholder="Ricky, Morty, Summer..."
         />
       </label>
       <Button
@@ -58,7 +51,7 @@ const FormSearch = (): React.ReactElement => {
         modifier="small"
         isDisabled={false}
       />
-    </SearchStyled>
+    </FormSearchStyled>
   );
 };
 

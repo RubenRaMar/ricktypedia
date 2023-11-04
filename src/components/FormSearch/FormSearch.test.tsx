@@ -1,19 +1,26 @@
 import { screen } from "@testing-library/dom";
 import { renderWithProviders } from "../../testUtils/renderWithProviders";
-import FormSearch from "./FormSearch";
 import userEvent from "@testing-library/user-event";
 import { store } from "../../store";
 import { server } from "../../mocks/apiTest/node";
 import { errorHandlers } from "../../mocks/apiTest/handlers";
+import FormSearch from "./FormSearch";
+
+afterEach(() => {
+  vi.clearAllMocks();
+});
 
 describe("Given a FormSearch component", () => {
+  const actionOnClick = vi.fn();
   const searchTextInput = "search";
   const searchTextButton = "search-button";
   const expectText = "morty";
 
   describe("When its rendered", () => {
     test("Then it should show a 'search' imput", () => {
-      renderWithProviders({ ui: <FormSearch /> });
+      renderWithProviders({
+        ui: <FormSearch onSearchChange={actionOnClick} />,
+      });
 
       const searchImput = screen.getByLabelText(searchTextInput);
 
@@ -21,7 +28,9 @@ describe("Given a FormSearch component", () => {
     });
 
     test("Then it should show a 'search-button' button", () => {
-      renderWithProviders({ ui: <FormSearch /> });
+      renderWithProviders({
+        ui: <FormSearch onSearchChange={actionOnClick} />,
+      });
 
       const searchButton = screen.getByRole("button", {
         name: searchTextButton,
@@ -33,7 +42,9 @@ describe("Given a FormSearch component", () => {
 
   describe("When rendering and a user types 'Morty' in search input", () => {
     test("Then it should show 'morty' in the search input", async () => {
-      renderWithProviders({ ui: <FormSearch /> });
+      renderWithProviders({
+        ui: <FormSearch onSearchChange={actionOnClick} />,
+      });
 
       const searchImput = screen.getByLabelText(searchTextInput);
 
@@ -44,14 +55,10 @@ describe("Given a FormSearch component", () => {
   });
 
   describe("And if you click on the search button", () => {
-    test("Then it should be a list of 4 characters", async () => {
-      const newCharacterLength = 4;
-
-      renderWithProviders({ ui: <FormSearch /> });
-
-      const searchImput = screen.getByLabelText(searchTextInput);
-
-      await userEvent.type(searchImput, expectText);
+    test("Then it should call the actionOnClick function", async () => {
+      renderWithProviders({
+        ui: <FormSearch onSearchChange={actionOnClick} />,
+      });
 
       const searchButton = screen.getByRole("button", {
         name: searchTextButton,
@@ -59,9 +66,7 @@ describe("Given a FormSearch component", () => {
 
       await userEvent.click(searchButton);
 
-      const charactersLength = store.getState().character.results.length;
-
-      expect(charactersLength).toBe(newCharacterLength);
+      expect(actionOnClick).toHaveBeenCalled();
     });
   });
 
@@ -72,7 +77,7 @@ describe("Given a FormSearch component", () => {
       const newCharacterLength = 0;
 
       renderWithProviders({
-        ui: <FormSearch />,
+        ui: <FormSearch onSearchChange={actionOnClick} />,
       });
 
       const searchImput = screen.getByLabelText(searchTextInput);

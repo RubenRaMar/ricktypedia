@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { themeColors } from "../../styles/themes/mainTheme";
 
-const SearchStyled = styled.form`
+const FormSearchStyled = styled.form`
   input {
     width: 300px;
     height: 40px;
@@ -18,10 +18,10 @@ const SearchStyled = styled.form`
   }
 
   input {
-    @media (max-width: 420px) {
-      width: 197px;
+    @media (max-width: 650px) {
+      width: 235px;
     }
   }
 `;
 
-export default SearchStyled;
+export default FormSearchStyled;
