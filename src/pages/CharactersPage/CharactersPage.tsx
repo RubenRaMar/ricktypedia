@@ -70,7 +70,7 @@ const CharactersPage = (): React.ReactElement => {
       <CharacterList />
       {results.length > 0 && (
         <Button
-          content="Show More"
+          text="Show More"
           actionOnClick={handleClickToAction}
           isDisabled={next === null}
         />

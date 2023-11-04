@@ -2,6 +2,11 @@ import styled from "styled-components";
 import { themeColors, themeFontsSize } from "../themes/mainTheme";
 
 const PageStyled = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-block-end: 70px;
+
   h1 {
     margin-block: 50px;
     text-align: center;

@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { themeColors } from "../../styles/themes/mainTheme";
+import { themeColors, themeFontsSize } from "../../styles/themes/mainTheme";
+import pixelToRem from "../../styles/functions/pixelToRem";
 
 const ButtonStyled = styled.button`
   width: 160px;
@@ -18,14 +19,31 @@ const ButtonStyled = styled.button`
       box-shadow: none;
       border-inline-start: 0;
       border-radius: 0 5px 5px 0;
-      font-size: 1rem;
+      font-size: ${themeFontsSize.small};
       width: 40px;
       height: 40px;
     }
 
+    &--medium {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      height: 44px;
+      border: 2px solid ${themeColors.tertiary};
+      box-shadow: inset 0px 0px 3px 1px ${themeColors.tertiaryTransparent};
+      border-block-start: none;
+      padding-inline: 10px;
+      font-size: ${pixelToRem(18)};
+      font-weight: 100;
+      text-transform: capitalize;
+      color: ${themeColors.light};
+      border-radius: 0;
+    }
+
     &:focus-visible {
       outline: none;
-      box-shadow: inset 0px 0px 3px 1px ${themeColors.tertiaryTransparent};
+      box-shadow: inset 0 0 3px 1px ${themeColors.tertiaryTransparent};
     }
 
     &:disabled {

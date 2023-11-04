@@ -14,7 +14,7 @@ describe("Given a Button component", () => {
           <Button
             isDisabled={true}
             actionOnClick={actionOnClick}
-            content={expectedTextButton}
+            text={expectedTextButton}
           />
         ),
       });
@@ -34,8 +34,8 @@ describe("Given a Button component", () => {
           <Button
             isDisabled={false}
             actionOnClick={actionOnClick}
-            content={expectedTextButton}
-            modifier="small"
+            text={expectedTextButton}
+            modifier={["small"]}
           />
         ),
       });
