@@ -47,8 +47,8 @@ const FormSearch = ({
       <Button
         label="search-button"
         type="submit"
-        content={faMagnifyingGlass}
-        modifier="small"
+        icon={faMagnifyingGlass}
+        modifier={["small"]}
         isDisabled={false}
       />
     </FormSearchStyled>
