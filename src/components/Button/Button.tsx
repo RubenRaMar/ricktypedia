@@ -5,18 +5,20 @@ import { IconDefinition } from "@fortawesome/fontawesome-common-types";
 
 interface ButtonProps {
   type?: "button" | "submit";
-  modifier?: "small";
+  modifier?: ("small" | "medium" | "medium-expanded")[];
   actionOnClick?: () => void;
-  content: string | IconDefinition;
-  isDisabled?: boolean;
+  text?: string;
+  icon?: IconDefinition;
   label?: string;
+  isDisabled?: boolean;
 }
 
 const Button = ({
   type = "button",
   modifier,
   actionOnClick,
-  content,
+  icon,
+  text,
   isDisabled,
   label,
 }: ButtonProps): React.ReactElement => {
@@ -24,15 +26,16 @@ const Button = ({
     <ButtonStyled
       aria-label={label}
       disabled={isDisabled}
-      className={`button ${modifier ? `button--${modifier}` : ""}`}
+      className={`button ${
+        modifier?.includes("small") ? "button--small" : ""
+      } ${modifier?.includes("medium") ? "button--medium" : ""} ${
+        modifier?.includes("medium-expanded") ? "button--medium-expanded" : ""
+      }`}
       onClick={actionOnClick}
       type={type}
     >
-      {typeof content === "string" ? (
-        content
-      ) : (
-        <FontAwesomeIcon icon={content} />
-      )}
+      {text}
+      {icon && <FontAwesomeIcon icon={icon} />}
     </ButtonStyled>
   );
 };
