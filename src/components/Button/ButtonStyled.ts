@@ -26,14 +26,15 @@ const ButtonStyled = styled.button`
 
     &--medium {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      height: 44px;
+      height: fit-content;
       border: 2px solid ${themeColors.tertiary};
       box-shadow: inset 0px 0px 3px 1px ${themeColors.tertiaryTransparent};
       border-block-start: none;
-      padding-inline: 10px;
+      padding: 10px;
       font-size: ${pixelToRem(18)};
       font-weight: 100;
       text-transform: capitalize;
