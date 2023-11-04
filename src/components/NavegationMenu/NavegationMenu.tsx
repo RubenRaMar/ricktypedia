@@ -7,7 +7,9 @@ const NavegationMenu = (): React.ReactElement => {
     <NavegationMenuStyled>
       <ul>
         <li>
-          <NavLink to={`${partialsPaths.character}`}>Home</NavLink>
+          <NavLink to={`${partialsPaths.character}`} end>
+            Home
+          </NavLink>
         </li>
       </ul>
     </NavegationMenuStyled>
