@@ -1,12 +1,12 @@
 import { screen } from "@testing-library/react";
-import { characterMock } from "../../mocks/characters/characters";
+import { arisaCyborgCharacterMock } from "../../mocks/characters/characters";
 import { renderWithProviders } from "../../testUtils/renderWithProviders";
 import Episodes from "./Episodes";
 import userEvent from "@testing-library/user-event";
 
 describe("Given a Episodes component", () => {
   const buttonText = "Episodes";
-  const episodes = characterMock.episode;
+  const episodes = arisaCyborgCharacterMock.episode;
 
   describe("When its rendered", () => {
     test("Then it shoul a button with de text 'Episodes'", () => {
