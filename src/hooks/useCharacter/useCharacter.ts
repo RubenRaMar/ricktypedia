@@ -55,7 +55,7 @@ const useCharacter = () => {
     [dispatch, getCharacterList]
   );
 
-  const gerCharacterById = useCallback(
+  const getCharacterById = useCallback(
     async (url: string): Promise<CharacterStructure | undefined> => {
       try {
         dispatch(showLoadingActionCreator());
@@ -72,7 +72,11 @@ const useCharacter = () => {
     [dispatch]
   );
 
-  return { getCharacterList, loadCharacters, gerCharacterById };
+  return {
+    getCharacterList,
+    loadCharacters,
+    getCharacterById,
+  };
 };
 
 export default useCharacter;
