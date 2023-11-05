@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CharacterApiStateStructure, CharacterStructure } from "../../types";
 import { initialCharactersState } from "../../data/characters/characters";
-import { initialCharacterData } from "../../mocks/characters/characters";
+import { initialCharacterDataMock } from "../../mocks/characters/characters";
 
 const characterSlice = createSlice({
   name: "character",
@@ -12,7 +12,7 @@ const characterSlice = createSlice({
       action: PayloadAction<CharacterApiStateStructure>
     ) => ({
       ...action.payload,
-      characterData: initialCharacterData,
+      characterData: initialCharacterDataMock,
     }),
     showMoreCharacters: (
       currentCharacterState,

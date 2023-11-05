@@ -1,6 +1,6 @@
 import {
   currentCharactersStateMock,
-  initialCharacterData,
+  initialCharacterDataMock,
   newCharactersStateMock,
 } from "../../../mocks/characters/characters";
 import {
@@ -20,7 +20,7 @@ describe("Given a loadCharacters mini reducer", () => {
 
       expect(loadCharacters).toStrictEqual({
         ...expectedCharacterStateMock,
-        characterData: initialCharacterData,
+        characterData: initialCharacterDataMock,
       });
     });
 

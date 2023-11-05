@@ -12,7 +12,7 @@ import {
 
 export const characterMock = characterMockFactory();
 
-export const initialCharacterData = {
+export const initialCharacterDataMock = {
   id: 0,
   name: "",
   status: "",
@@ -62,7 +62,7 @@ export const initialCharactersStateMock: CharacterStateStructure = {
     next: "",
     prev: "",
   },
-  characterData: initialCharacterData,
+  characterData: initialCharacterDataMock,
 };
 
 export const currentCharactersStateMock: CharacterStateStructure = {
