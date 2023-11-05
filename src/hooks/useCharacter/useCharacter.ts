@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import axios from "axios";
-import { CharacterStateStructure } from "../../types";
+import { CharacterApiStateStructure } from "../../types";
 import { useAppDispatch } from "../../store";
 import {
   hideLoadingActionCreator,
@@ -13,17 +13,17 @@ const useCharacter = () => {
   const dispatch = useAppDispatch();
 
   const getCharacterList = useCallback(
-    async (path: string): Promise<CharacterStateStructure | undefined> => {
+    async (path: string): Promise<CharacterApiStateStructure | undefined> => {
       try {
         dispatch(showLoadingActionCreator());
 
-        const { data: characterStateStructure } = await axios.get<
-          Promise<CharacterStateStructure>
+        const { data: characterState } = await axios.get<
+          Promise<CharacterApiStateStructure>
         >(path);
 
         dispatch(hideLoadingActionCreator());
 
-        return characterStateStructure;
+        return characterState;
       } catch (error) {
         dispatch(hideLoadingActionCreator());
       }

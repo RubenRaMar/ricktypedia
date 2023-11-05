@@ -1,5 +1,6 @@
 import {
   currentCharactersStateMock,
+  initialCharacterData,
   newCharactersStateMock,
 } from "../../../mocks/characters/characters";
 import {
@@ -11,16 +12,24 @@ describe("Given a loadCharacters mini reducer", () => {
   describe("When its invoked with a new list of 4 characters", () => {
     const expectedCharacterStateMock = newCharactersStateMock;
 
-    const loadCharacters = characterReduder(
-      currentCharactersStateMock,
-      loadCharactersActionCreator(newCharactersStateMock)
-    );
-
     test("Then it returns a new characters list with the new characters", () => {
-      expect(loadCharacters).toStrictEqual(expectedCharacterStateMock);
+      const loadCharacters = characterReduder(
+        currentCharactersStateMock,
+        loadCharactersActionCreator(newCharactersStateMock)
+      );
+
+      expect(loadCharacters).toStrictEqual({
+        ...expectedCharacterStateMock,
+        characterData: initialCharacterData,
+      });
     });
 
     test("And the info should be replaced by the new one", () => {
+      const loadCharacters = characterReduder(
+        currentCharactersStateMock,
+        loadCharactersActionCreator(newCharactersStateMock)
+      );
+
       expect(loadCharacters.info).toStrictEqual(newCharactersStateMock.info);
     });
   });

@@ -25,9 +25,12 @@ export interface InfoStructure {
   prev: string | null;
 }
 
-export interface CharacterStateStructure {
+export interface CharacterApiStateStructure {
   results: CharacterStructure[];
   info: InfoStructure;
+}
+export interface CharacterStateStructure extends CharacterApiStateStructure {
+  characterData: CharacterStructure;
 }
 
 export interface UiStructure {

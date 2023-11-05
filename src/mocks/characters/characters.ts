@@ -1,10 +1,37 @@
 import { apiPaths } from "../../constants/paths/paths";
-import { CharacterStateStructure, CharacterStructure } from "../../types";
+import {
+  CharacterApiStateStructure,
+  CharacterStateStructure,
+  CharacterStructure,
+} from "../../types";
 import {
   characterMockFactory,
   charactersMocksFactory,
   infoMockFactory,
 } from "../factory/factories";
+
+export const characterMock = characterMockFactory();
+
+export const initialCharacterData = {
+  id: 0,
+  name: "",
+  status: "",
+  species: "",
+  type: "",
+  gender: "",
+  origin: {
+    name: "",
+    url: "",
+  },
+  location: {
+    name: "",
+    url: "",
+  },
+  image: "",
+  episode: [],
+  created: "",
+  url: "",
+};
 
 export const initialCharactersStateMock: CharacterStateStructure = {
   results: [
@@ -35,14 +62,16 @@ export const initialCharactersStateMock: CharacterStateStructure = {
     next: "",
     prev: "",
   },
+  characterData: initialCharacterData,
 };
 
 export const currentCharactersStateMock: CharacterStateStructure = {
   results: charactersMocksFactory(4),
   info: infoMockFactory(),
+  characterData: characterMock,
 };
 
-export const newCharactersStateMock: CharacterStateStructure = {
+export const newCharactersStateMock: CharacterApiStateStructure = {
   results: charactersMocksFactory(4),
   info: {
     count: 0,
@@ -52,7 +81,7 @@ export const newCharactersStateMock: CharacterStateStructure = {
   },
 };
 
-export const moreCharactersStateMock: CharacterStateStructure = {
+export const moreCharactersStateMock: CharacterApiStateStructure = {
   results: charactersMocksFactory(4),
   info: {
     count: 0,
@@ -61,8 +90,6 @@ export const moreCharactersStateMock: CharacterStateStructure = {
     prev: "",
   },
 };
-
-export const characterMock = characterMockFactory();
 
 export const arisaCyborgCharacterMock: CharacterStructure = {
   id: 16,
@@ -96,7 +123,7 @@ export const arisaCyborgCharacterMock: CharacterStructure = {
   created: "2017-11-04T21:12:45.235Z",
 };
 
-export const emptyCharactersStateMock: CharacterStateStructure = {
+export const emptyCharactersStateMock: CharacterApiStateStructure = {
   results: [],
   info: {
     count: 0,
