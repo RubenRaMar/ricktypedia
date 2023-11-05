@@ -1,28 +1,38 @@
-import { CharacterStructure } from "../../types";
 import CharacterDetailsPageStyled from "./CharacterDetailsPageStyled";
 import Episodes from "../../components/Episodes/Episodes";
+import { useParams } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../store";
+import { useEffect } from "react";
+import useCharacter from "../../hooks/useCharacter/useCharacter";
+import { apiPaths } from "../../constants/paths/paths";
+import { loadCharacterByIdActionCreator } from "../../store/characters/charactersSlice";
 
 const CharacterDetailsPage = (): React.ReactElement => {
-  const characterData: CharacterStructure = {
-    id: 16,
-    name: "Amish Cyborg",
-    status: "Dead",
-    species: "Alien",
-    type: "Parasite",
-    gender: "Male",
-    origin: {
-      name: "unknown",
-      url: "",
-    },
-    location: {
-      name: "Earth (Replacement Dimension)",
-      url: "https://rickandmortyapi.com/api/location/20",
-    },
-    image: "https://rickandmortyapi.com/api/character/avatar/16.jpeg",
-    episode: ["https://rickandmortyapi.com/api/episode/15"],
-    url: "https://rickandmortyapi.com/api/character/16",
-    created: "2017-11-04T21:12:45.235Z",
-  };
+  const { id } = useParams();
+  const dispatch = useAppDispatch();
+  const characterData = useAppSelector(
+    ({ character: { characterData } }) => characterData
+  );
+  const { getCharacterById } = useCharacter();
+
+  useEffect(() => {
+    (async () => {
+      const character = await getCharacterById(`${apiPaths.character}/${id}`);
+
+      if (character) {
+        dispatch(loadCharacterByIdActionCreator(character));
+
+        const preloadLink = document.createElement("link");
+        preloadLink.rel = "preload";
+        preloadLink.as = "image";
+        preloadLink.href = character.image;
+
+        const head = document.head;
+        const firstChild = head.firstChild;
+        head.insertBefore(preloadLink, firstChild);
+      }
+    })();
+  }, [dispatch, getCharacterById, id]);
 
   const {
     name,
@@ -36,6 +46,7 @@ const CharacterDetailsPage = (): React.ReactElement => {
     created,
     origin: { name: originName },
   } = characterData;
+
   return (
     <CharacterDetailsPageStyled className="character">
       <h1>{name}</h1>

@@ -1,5 +1,8 @@
 import { screen } from "@testing-library/react";
-import { arisaCyborgCharacterMock } from "../../mocks/characters/characters";
+import {
+  characterMock,
+  currentCharactersStateMock,
+} from "../../mocks/characters/characters";
 import { renderWithProviders } from "../../testUtils/renderWithProviders";
 import CharacterDetailsPage from "./CharacterDetailsPage";
 
@@ -14,12 +17,15 @@ describe("Given a CharacterDetailsPage page", () => {
       species,
       status,
       type,
-    } = arisaCyborgCharacterMock;
+    } = characterMock;
 
     test(`Then it should show the image of the 'character ${name}'`, () => {
       const altText = `character ${name}`;
 
-      renderWithProviders({ ui: <CharacterDetailsPage /> });
+      renderWithProviders({
+        ui: <CharacterDetailsPage />,
+        preloadedState: { character: currentCharactersStateMock },
+      });
 
       const characterImage = screen.getByAltText(altText);
 
@@ -29,7 +35,10 @@ describe("Given a CharacterDetailsPage page", () => {
     test(`And a heading with the text ${name}`, () => {
       const characterName = name;
 
-      renderWithProviders({ ui: <CharacterDetailsPage /> });
+      renderWithProviders({
+        ui: <CharacterDetailsPage />,
+        preloadedState: { character: currentCharactersStateMock },
+      });
 
       const nameHeading = screen.getByRole("heading", { name: characterName });
 
@@ -54,7 +63,10 @@ describe("Given a CharacterDetailsPage page", () => {
         originName,
       ];
 
-      renderWithProviders({ ui: <CharacterDetailsPage /> });
+      renderWithProviders({
+        ui: <CharacterDetailsPage />,
+        preloadedState: { character: currentCharactersStateMock },
+      });
 
       characterDataList.forEach((characterData) => {
         const nameHeading = screen.getByText(characterData);
