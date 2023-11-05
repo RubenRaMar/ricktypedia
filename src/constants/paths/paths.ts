@@ -19,6 +19,5 @@ export const apiPaths: ApiPathsStructure = {
 
 export const characterPaths: CharacterPathsStructure = {
   characterDetails: `${partialsPaths.character}${partialsPaths.details}`,
-
   characterDetailsId: `${partialsPaths.character}${partialsPaths.details}${partialsPaths.characterId}`,
 };

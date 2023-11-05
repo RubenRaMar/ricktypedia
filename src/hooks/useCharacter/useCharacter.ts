@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import axios from "axios";
-import { CharacterApiStateStructure } from "../../types";
+import { CharacterApiStateStructure, CharacterStructure } from "../../types";
 import { useAppDispatch } from "../../store";
 import {
   hideLoadingActionCreator,
@@ -55,7 +55,24 @@ const useCharacter = () => {
     [dispatch, getCharacterList]
   );
 
-  return { getCharacterList, loadCharacters };
+  const gerCharacterById = useCallback(
+    async (url: string): Promise<CharacterStructure | undefined> => {
+      try {
+        dispatch(showLoadingActionCreator());
+
+        const { data: character } = await axios.get<CharacterStructure>(url);
+
+        dispatch(hideLoadingActionCreator());
+
+        return character;
+      } catch (error) {
+        dispatch(hideLoadingActionCreator());
+      }
+    },
+    [dispatch]
+  );
+
+  return { getCharacterList, loadCharacters, gerCharacterById };
 };
 
 export default useCharacter;
