@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CharacterStateStructure } from "../../types";
+import { CharacterApiStateStructure } from "../../types";
 import { initialCharactersState } from "../../data/characters/characters";
+import { initialCharacterData } from "../../mocks/characters/characters";
 
 const characterSlice = createSlice({
   name: "character",
@@ -8,12 +9,16 @@ const characterSlice = createSlice({
   reducers: {
     loadCharacters: (
       _currentCharacterState,
-      action: PayloadAction<CharacterStateStructure>
-    ) => action.payload,
+      action: PayloadAction<CharacterApiStateStructure>
+    ) => ({
+      ...action.payload,
+      characterData: initialCharacterData,
+    }),
     showMoreCharacters: (
       currentCharacterState,
-      action: PayloadAction<CharacterStateStructure>
+      action: PayloadAction<CharacterApiStateStructure>
     ) => ({
+      ...currentCharacterState,
       results: [...currentCharacterState.results, ...action.payload.results],
       info: action.payload.info,
     }),

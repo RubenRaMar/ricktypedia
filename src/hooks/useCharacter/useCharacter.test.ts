@@ -3,6 +3,7 @@ import { wrapWithProviders } from "../../testUtils/renderWithProviders";
 
 import {
   emptyCharactersStateMock,
+  initialCharacterData,
   newCharactersStateMock,
 } from "../../mocks/characters/characters";
 import { server } from "../../mocks/apiTest/node";
@@ -60,7 +61,10 @@ describe("Given a loadCharacters hook", () => {
 
       const character = store.getState().character;
 
-      expect(character).toStrictEqual(newCharactersStateMock);
+      expect(character).toStrictEqual({
+        ...newCharactersStateMock,
+        characterData: initialCharacterData,
+      });
     });
   });
 

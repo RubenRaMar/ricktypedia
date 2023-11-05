@@ -11,6 +11,7 @@ import {
 describe("Given a showMoreCharacters mini reducer", () => {
   describe("When its invoked with a new list of 4 characters and it already contains another 4", () => {
     const expectedCharacterStateMock: CharacterStateStructure = {
+      ...currentCharactersStateMock,
       results: [
         ...currentCharactersStateMock.results,
         ...moreCharactersStateMock.results,
