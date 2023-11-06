@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 import {
   characterMock,
   currentCharactersStateMock,
-} from "../../mocks/characters/characters";
+} from "../../mocks/charactersMocks/charactersMocks";
 import { renderWithProviders } from "../../testUtils/renderWithProviders";
 import CharacterDetailsPage from "./CharacterDetailsPage";
 

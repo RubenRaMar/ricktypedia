@@ -2,7 +2,7 @@ import {
   currentCharactersStateMock,
   initialCharacterDataMock,
   newCharactersStateMock,
-} from "../../../mocks/characters/characters";
+} from "../../../mocks/charactersMocks/charactersMocks";
 import {
   characterReduder,
   loadCharactersActionCreator,

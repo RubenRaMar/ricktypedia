@@ -6,9 +6,11 @@ import {
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { characterReduder } from "./characters/charactersSlice";
 import { uiReducer } from "./ui/uiSlice";
+import { episodeReducer } from "./episodes/episodeSlice";
 
 const rootReducer = combineReducers({
   character: characterReduder,
+  episode: episodeReducer,
   ui: uiReducer,
 });
 

@@ -6,7 +6,7 @@ import {
   emptyCharactersStateMock,
   initialCharacterDataMock,
   newCharactersStateMock,
-} from "../../mocks/characters/characters";
+} from "../../mocks/charactersMocks/charactersMocks";
 import { server } from "../../mocks/apiTest/node";
 import useCharacter from "./useCharacter";
 import { errorHandlers, handlers } from "../../mocks/apiTest/handlers";

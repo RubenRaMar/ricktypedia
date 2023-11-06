@@ -1,6 +1,5 @@
 import { useCallback } from "react";
 import axios from "axios";
-import { CharacterApiStateStructure, CharacterStructure } from "../../types";
 import { useAppDispatch } from "../../store";
 import {
   hideLoadingActionCreator,
@@ -8,6 +7,10 @@ import {
 } from "../../store/ui/uiSlice";
 import { loadCharactersActionCreator } from "../../store/characters/charactersSlice";
 import { initialCharactersState } from "../../data/characters/characters";
+import {
+  CharacterApiStateStructure,
+  CharacterStructure,
+} from "../../data/characters/types";
 
 const useCharacter = () => {
   const dispatch = useAppDispatch();

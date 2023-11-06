@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import { renderWithProviders } from "../../testUtils/renderWithProviders";
 import CharacterList from "./CharacterList";
-import { currentCharactersStateMock } from "../../mocks/characters/characters";
+import { currentCharactersStateMock } from "../../mocks/charactersMocks/charactersMocks";
 
 describe("Given a CharacterList component", () => {
   describe("When its invoked and there is a list of characters", () => {
