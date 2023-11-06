@@ -1,4 +1,4 @@
-import { UiStructure } from "../../types";
+import { UiStructure } from "../../data/ui/types";
 
 export const initialUiStateMock: UiStructure = {
   isLoading: false,

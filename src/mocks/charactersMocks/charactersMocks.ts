@@ -3,14 +3,13 @@ import {
   CharacterApiStateStructure,
   CharacterStateStructure,
   CharacterStructure,
-} from "../../types";
+} from "../../data/characters/types";
+import { infoData } from "../../data/info/info";
 import {
   characterMockFactory,
   charactersMocksFactory,
-  infoMockFactory,
-} from "../factory/factories";
-
-export const characterMock = characterMockFactory();
+} from "../factory/characterFactories/characterFactories";
+import { infoMockFactory } from "../factory/infoFactories/infoFactories";
 
 export const initialCharacterDataMock = {
   id: 0,
@@ -33,62 +32,43 @@ export const initialCharacterDataMock = {
   url: "",
 };
 
+export const characterMock = characterMockFactory();
+
 export const initialCharactersStateMock: CharacterStateStructure = {
-  results: [
-    {
-      id: 0,
-      name: "",
-      status: "",
-      species: "",
-      type: "",
-      gender: "",
-      origin: {
-        name: "",
-        url: "",
-      },
-      location: {
-        name: "",
-        url: "",
-      },
-      image: "",
-      episode: [],
-      created: "",
-      url: "",
-    },
-  ],
-  info: {
-    count: 0,
-    pages: 0,
-    next: "",
-    prev: "",
-  },
+  info: infoData,
+  results: [initialCharacterDataMock],
   characterData: initialCharacterDataMock,
 };
 
 export const currentCharactersStateMock: CharacterStateStructure = {
-  results: charactersMocksFactory(4),
   info: infoMockFactory(),
+  results: charactersMocksFactory(4),
   characterData: characterMock,
 };
 
-export const newCharactersStateMock: CharacterApiStateStructure = {
+export const moreCharactersStateMock: CharacterApiStateStructure = {
+  info: infoData,
   results: charactersMocksFactory(4),
+};
+
+export const emptyCharactersStateMock: CharacterApiStateStructure = {
+  info: {
+    count: 0,
+    pages: 0,
+    next: "/character",
+    prev: "",
+  },
+  results: [],
+};
+
+export const newCharactersStateMock: CharacterApiStateStructure = {
   info: {
     count: 0,
     pages: 0,
     next: apiPaths.character,
     prev: "",
   },
-};
-
-export const moreCharactersStateMock: CharacterApiStateStructure = {
   results: charactersMocksFactory(4),
-  info: {
-    count: 0,
-    pages: 0,
-    next: "",
-    prev: "",
-  },
 };
 
 export const arisaCyborgCharacterMock: CharacterStructure = {
@@ -121,14 +101,4 @@ export const arisaCyborgCharacterMock: CharacterStructure = {
   ],
   url: "https://rickandmortyapi.com/api/character/16",
   created: "2017-11-04T21:12:45.235Z",
-};
-
-export const emptyCharactersStateMock: CharacterApiStateStructure = {
-  results: [],
-  info: {
-    count: 0,
-    pages: 0,
-    next: "/character",
-    prev: "",
-  },
 };

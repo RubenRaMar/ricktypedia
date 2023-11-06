@@ -3,8 +3,11 @@ import { apiPaths } from "../../constants/paths/paths";
 import {
   characterMock,
   newCharactersStateMock,
-} from "../characters/characters";
-import { CharacterApiStateStructure, CharacterStructure } from "../../types";
+} from "../charactersMocks/charactersMocks";
+import {
+  CharacterApiStateStructure,
+  CharacterStructure,
+} from "../../data/characters/types";
 
 export const handlers = [
   http.get(apiPaths.character, () => {
