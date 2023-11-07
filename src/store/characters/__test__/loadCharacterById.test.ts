@@ -1,7 +1,7 @@
 import {
   characterMock,
   initialCharactersStateMock,
-} from "../../../mocks/characters/characters";
+} from "../../../mocks/charactersMocks/charactersMocks";
 import {
   characterReduder,
   loadCharacterByIdActionCreator,

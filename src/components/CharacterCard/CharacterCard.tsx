@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { CharacterStructure } from "../../types";
 import CharacterCardStyled from "./CharacterCardStyled";
 import { characterPaths } from "../../constants/paths/paths";
+import { CharacterStructure } from "../../data/characters/types";
 
 interface CharacterCardProps {
   character: CharacterStructure;

@@ -1,13 +1,9 @@
-import { CharacterStateStructure } from "../../types";
+import { infoData } from "../info/info";
+import { CharacterStateStructure } from "./types";
 
 export const initialCharactersState: CharacterStateStructure = {
   results: [],
-  info: {
-    count: 0,
-    pages: 0,
-    next: "",
-    prev: "",
-  },
+  info: infoData,
   characterData: {
     id: 0,
     name: "",

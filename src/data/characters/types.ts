@@ -1,3 +1,5 @@
+import { InfoStructure } from "../info/types";
+
 export interface NameStructure {
   name: string;
   url: string;
@@ -18,21 +20,11 @@ export interface CharacterStructure {
   url: string;
 }
 
-export interface InfoStructure {
-  count: number;
-  pages: number;
-  next: string | null;
-  prev: string | null;
-}
-
 export interface CharacterApiStateStructure {
   results: CharacterStructure[];
   info: InfoStructure;
 }
+
 export interface CharacterStateStructure extends CharacterApiStateStructure {
   characterData: CharacterStructure;
-}
-
-export interface UiStructure {
-  isLoading: boolean;
 }

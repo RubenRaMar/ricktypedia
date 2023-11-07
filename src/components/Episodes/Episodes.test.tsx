@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import { arisaCyborgCharacterMock } from "../../mocks/characters/characters";
+import { arisaCyborgCharacterMock } from "../../mocks/charactersMocks/charactersMocks";
 import { renderWithProviders } from "../../testUtils/renderWithProviders";
 import Episodes from "./Episodes";
 import userEvent from "@testing-library/user-event";

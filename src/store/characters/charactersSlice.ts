@@ -1,7 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CharacterApiStateStructure, CharacterStructure } from "../../types";
 import { initialCharactersState } from "../../data/characters/characters";
-import { initialCharacterDataMock } from "../../mocks/characters/characters";
+import { initialCharacterDataMock } from "../../mocks/charactersMocks/charactersMocks";
+import {
+  CharacterApiStateStructure,
+  CharacterStructure,
+} from "../../data/characters/types";
 
 const characterSlice = createSlice({
   name: "character",

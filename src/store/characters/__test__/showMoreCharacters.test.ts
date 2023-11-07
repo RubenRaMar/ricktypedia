@@ -1,8 +1,8 @@
+import { CharacterStateStructure } from "../../../data/characters/types";
 import {
   currentCharactersStateMock,
   moreCharactersStateMock,
-} from "../../../mocks/characters/characters";
-import { CharacterStateStructure } from "../../../types";
+} from "../../../mocks/charactersMocks/charactersMocks";
 import {
   characterReduder,
   showMoreCharactersActionCreator,
