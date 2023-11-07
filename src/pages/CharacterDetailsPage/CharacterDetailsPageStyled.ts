@@ -20,9 +20,7 @@ const CharacterDetailsPageStyled = styled(PageStyled)`
 
     &__data {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      text-align: center;
       background-color: ${themeColors.darkTransparent};
       border: 2px solid ${themeColors.tertiary};
       box-shadow: inset 0px 0px 3px 1px ${themeColors.tertiaryTransparent};
@@ -36,6 +34,12 @@ const CharacterDetailsPageStyled = styled(PageStyled)`
     &__key {
       width: fit-content;
       font-size: ${pixelToRem(18)};
+      flex: 1;
+    }
+
+    &__value {
+      flex: 1;
+      color: ${themeColors.lightGrey};
     }
   }
 

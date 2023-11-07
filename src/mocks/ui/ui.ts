@@ -4,4 +4,7 @@ export const initialUiStateMock: UiStructure = {
   isLoading: false,
 };
 
-export const isLoadingTrueMock = { ...initialUiStateMock, isLoading: true };
+export const isLoadingTrueMock: UiStructure = {
+  ...initialUiStateMock,
+  isLoading: true,
+};

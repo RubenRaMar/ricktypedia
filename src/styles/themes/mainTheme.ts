@@ -9,7 +9,7 @@ const mainTheme: DefaultTheme = {
     tertiary: "#7cbd28",
     tertiaryTransparent: "#7cbd28c7",
     light: "#d0d0d0",
-    lightGrey: "#8a8888",
+    lightGrey: "#a5a5a5",
     dark: "#000",
     darkTransparent: "#070707bd",
     darkGrey: "#141414",
