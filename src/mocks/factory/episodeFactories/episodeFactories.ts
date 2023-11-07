@@ -1,8 +1,8 @@
 import { Factory } from "fishery";
-import { EpisodesStructure } from "../../../data/episodes/types";
 import { faker } from "@faker-js/faker";
+import { EpisodeDataStateStructure } from "../../../data/episodes/types";
 
-const episodeFactory = Factory.define<EpisodesStructure>(() => ({
+const episodeFactory = Factory.define<EpisodeDataStateStructure>(() => ({
   id: faker.number.int(),
   name: faker.person.firstName(),
   episode: faker.string.alpha({ length: 10 }),
@@ -13,15 +13,15 @@ const episodeFactory = Factory.define<EpisodesStructure>(() => ({
     faker.internet.url({ appendSlash: true }),
     faker.internet.url({ appendSlash: true }),
   ],
-  air_date: faker.string.alpha({ length: 10 }),
+  airDate: faker.string.alpha({ length: 10 }),
   created: faker.string.alpha({ length: 10 }),
   url: faker.string.alpha({ length: 10 }),
 }));
 
-export const episodeMockFactory = (data?: EpisodesStructure) =>
+export const episodeMockFactory = (data?: EpisodeDataStateStructure) =>
   episodeFactory.build(data);
 
 export const episodeMocksFactory = (
   totalMocks: number,
-  data?: EpisodesStructure
+  data?: EpisodeDataStateStructure
 ) => episodeFactory.buildList(totalMocks, data);

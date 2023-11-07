@@ -11,7 +11,7 @@ import {
 } from "../factory/characterFactories/characterFactories";
 import { infoMockFactory } from "../factory/infoFactories/infoFactories";
 
-export const initialCharacterDataMock = {
+export const initialCharacterDataMock: CharacterStructure = {
   id: 0,
   name: "",
   status: "",
