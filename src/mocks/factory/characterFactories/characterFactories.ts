@@ -1,12 +1,12 @@
 import { Factory } from "fishery";
-import { CharacterStructure, InfoStructure } from "../../types";
+import { CharacterStructure } from "../../../data/characters/types";
 import { faker } from "@faker-js/faker";
 
 const characterFactory = Factory.define<CharacterStructure>(() => ({
   id: faker.number.int(),
   name: faker.person.firstName(),
-  created: faker.person.gender(),
-  gender: faker.person.prefix(),
+  created: faker.person.prefix(),
+  gender: faker.person.gender(),
   episode: [
     faker.internet.url({ appendSlash: true }),
     faker.internet.url({ appendSlash: true }),
@@ -15,26 +15,22 @@ const characterFactory = Factory.define<CharacterStructure>(() => ({
     faker.internet.url({ appendSlash: true }),
   ],
   image: faker.image.url(),
-  type: faker.string.alpha(),
-  species: faker.string.alpha(),
-  status: faker.string.alpha(),
-  location: { name: faker.location.city(), url: faker.string.alpha() },
-  origin: { name: faker.location.city(), url: faker.string.alpha() },
-  url: faker.string.alpha(),
-}));
-
-const infoFactory = Factory.define<InfoStructure>(() => ({
-  count: faker.number.int(),
-  next: faker.string.alpha(),
-  prev: faker.string.alpha(),
-  pages: faker.number.int(),
+  type: faker.string.alpha({ length: 10 }),
+  species: faker.string.alpha({ length: 10 }),
+  status: faker.string.alpha({ length: 10 }),
+  location: {
+    name: faker.location.city(),
+    url: faker.string.alpha({ length: 10 }),
+  },
+  origin: {
+    name: faker.location.city(),
+    url: faker.string.alpha({ length: 10 }),
+  },
+  url: faker.string.alpha({ length: 10 }),
 }));
 
 export const characterMockFactory = (data?: CharacterStructure) =>
   characterFactory.build(data);
-
-export const infoMockFactory = (data?: InfoStructure) =>
-  infoFactory.build(data);
 
 export const charactersMocksFactory = (
   totalMocks: number,
