@@ -25,7 +25,7 @@ export const renderWithProviders = ({
   preloadedRoutes,
 }: RenderWithProvidersProps) => {
   const testStore = preloadedState ? setupStore(preloadedState) : store;
-  const testRoutes = preloadedRoutes ? preloadedRoutes : routes;
+  const testRoutes = preloadedRoutes ?? routes;
   const appTestRouter = createBrowserRouter(testRoutes);
 
   const TestWrapperWithRouterProvider = (): React.ReactElement => {

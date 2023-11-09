@@ -8,6 +8,8 @@ import {
   CharacterApiStateStructure,
   CharacterStructure,
 } from "../../data/characters/types";
+import { EpisodesApiStructure } from "../../data/episodes/types";
+import { episodesApiMock } from "../episodesMocks/episodesMocks";
 
 export const handlers = [
   http.get(apiPaths.character, () => {
@@ -23,6 +25,11 @@ export const handlers = [
       status: 200,
     });
   }),
+  http.get(`${apiPaths.episode}`, () => {
+    return HttpResponse.json<EpisodesApiStructure>(episodesApiMock, {
+      status: 200,
+    });
+  }),
 ];
 
 export const errorHandlers = [
@@ -31,5 +38,8 @@ export const errorHandlers = [
   }),
   http.get(`${apiPaths.character}/:id`, () => {
     return HttpResponse.json<CharacterStructure>(null, { status: 404 });
+  }),
+  http.get(`${apiPaths.episode}`, () => {
+    return HttpResponse.json<EpisodesApiStructure>(null, { status: 404 });
   }),
 ];
