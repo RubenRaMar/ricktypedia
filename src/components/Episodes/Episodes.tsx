@@ -12,7 +12,7 @@ const Episodes = ({ episodes }: EpisodesProps): React.ReactElement => {
   const [isVisible, setIsVisible] = useState(false);
 
   const toogleVisibilityEpisode = () => {
-    setIsVisible((isVisible) => (isVisible = !isVisible));
+    setIsVisible((isVisible) => !isVisible);
   };
 
   return (

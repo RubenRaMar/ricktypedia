@@ -15,7 +15,7 @@ import { apiPaths, characterPaths } from "../../constants/paths/paths";
 
 describe("Given a getCharacterList custom hook", () => {
   describe(`When it invoked with the path "${apiPaths.character}"`, () => {
-    test("Then it should return a character list and its info", async () => {
+    test("Then it should return a character list and their info", async () => {
       const expectedNewCharacters = newCharactersStateMock;
 
       const {
