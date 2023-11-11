@@ -5,10 +5,12 @@ import Button from "../Button/Button";
 
 interface SearchCharactersProps {
   onSearchChange: (value: string) => void;
+  placeholder: "Ricky, Morty, Summer..." | "Pilot, Lawnmower Dog...";
 }
 
 const FormSearch = ({
   onSearchChange,
+  placeholder,
 }: SearchCharactersProps): React.ReactElement => {
   const [nameToSearch, setNameToSearch] = useState("");
 
@@ -41,7 +43,7 @@ const FormSearch = ({
           onChange={handleOnChange}
           value={nameToSearch}
           autoComplete="off"
-          placeholder="Ricky, Morty, Summer..."
+          placeholder={placeholder}
         />
       </label>
       <Button

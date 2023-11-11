@@ -6,7 +6,7 @@ import { newEpisodesStateMock } from "../../mocks/episodesMocks/episodesMocks";
 
 describe("Given getEpisodes function", () => {
   describe(`When it invoked with the url "${apiPaths.episode}"`, () => {
-    test.only("Then it should return a episode list and their info", async () => {
+    test("Then it should return a episode list and their info", async () => {
       const {
         result: {
           current: { getEpisodes },
