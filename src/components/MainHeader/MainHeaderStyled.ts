@@ -10,13 +10,10 @@ const MainHeaderStled = styled.header`
   padding: 10px 30px;
   box-shadow: 0px 0px 6px 1px ${themeColors.tertiary};
 
-  .main-header {
-    &__image {
-      @media (max-width: 400px) {
-        width: 150px;
-        height: 58px;
-      }
-    }
+  @media (max-width: 550px) {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 `;
 

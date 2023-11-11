@@ -10,8 +10,8 @@ const EpisodesMenuStyled = styled.article`
     color: ${themeColors.tertiary};
   }
 
-  .items {
-    &__items-list {
+  .episodes {
+    &__episodes-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(110px, 2fr));
       gap: 15px;
@@ -32,7 +32,7 @@ const EpisodesMenuStyled = styled.article`
       }
     }
 
-    &__item {
+    &__episode {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -45,7 +45,6 @@ const EpisodesMenuStyled = styled.article`
 
       &:hover {
         background-color: #152502d9;
-        transform: scale(1.02);
         transition: all 0.2s ease-in-out;
       }
 
