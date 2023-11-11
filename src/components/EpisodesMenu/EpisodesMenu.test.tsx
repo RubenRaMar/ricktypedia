@@ -1,17 +1,17 @@
 import { screen } from "@testing-library/react";
 import { arisaCyborgCharacterMock } from "../../mocks/charactersMocks/charactersMocks";
 import { renderWithProviders } from "../../testUtils/renderWithProviders";
-import Episodes from "./Episodes";
+import EpisodesMenu from "./EpisodesMenu";
 import userEvent from "@testing-library/user-event";
 
-describe("Given a Episodes component", () => {
+describe("Given a EpisodesMenu component", () => {
   const buttonText = "Episodes";
   const episodes = arisaCyborgCharacterMock.episode;
 
   describe("When its rendered", () => {
     test("Then it shoul a button with de text 'Episodes'", () => {
       renderWithProviders({
-        ui: <Episodes episodes={episodes} />,
+        ui: <EpisodesMenu episodes={episodes} />,
       });
 
       const episodesButton = screen.getByRole("button", { name: buttonText });
@@ -23,7 +23,7 @@ describe("Given a Episodes component", () => {
   describe("And if you click on the 'Episodes' button", () => {
     test("Then it should expand a list of episodes", async () => {
       renderWithProviders({
-        ui: <Episodes episodes={episodes} />,
+        ui: <EpisodesMenu episodes={episodes} />,
       });
 
       const episodesButton = screen.getByRole("button", { name: buttonText });
@@ -39,7 +39,7 @@ describe("Given a Episodes component", () => {
 
     test("And should show the episodes names", async () => {
       renderWithProviders({
-        ui: <Episodes episodes={episodes} />,
+        ui: <EpisodesMenu episodes={episodes} />,
       });
 
       const episodesButton = screen.getByRole("button", { name: buttonText });

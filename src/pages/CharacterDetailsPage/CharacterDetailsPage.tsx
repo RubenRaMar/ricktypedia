@@ -1,5 +1,5 @@
 import CharacterDetailsPageStyled from "./CharacterDetailsPageStyled";
-import Episodes from "../../components/Episodes/Episodes";
+import EpisodesMenu from "../../components/EpisodesMenu/EpisodesMenu";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { useEffect } from "react";
@@ -55,7 +55,11 @@ const CharacterDetailsPage = (): React.ReactElement => {
         src={image}
         alt={`character ${name}`}
         width="300"
-        height="300px"
+        height="300"
+        onError={({ currentTarget }) => {
+          currentTarget.onerror = null;
+          currentTarget.src = "/images/backgroundDetail.webp";
+        }}
       />
       <div className="character__data">
         <span className="character__key">Gender</span>
@@ -87,7 +91,7 @@ const CharacterDetailsPage = (): React.ReactElement => {
         <span className="character__key">Origin</span>
         <span className="character__value">{originName}</span>
       </div>
-      <Episodes episodes={episodes} />
+      <EpisodesMenu episodes={episodes} />
     </CharacterDetailsPageStyled>
   );
 };

@@ -2,13 +2,13 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import Button from "../Button/Button";
-import EpisodesStyled from "./EpisodesStyled";
+import EpisodesMenuStyled from "./EpisodesMenuStyled";
 
-interface EpisodesProps {
+interface EpisodesMenuProps {
   episodes: string[];
 }
 
-const Episodes = ({ episodes }: EpisodesProps): React.ReactElement => {
+const EpisodesMenu = ({ episodes }: EpisodesMenuProps): React.ReactElement => {
   const [isVisible, setIsVisible] = useState(false);
 
   const toogleVisibilityEpisode = () => {
@@ -16,7 +16,7 @@ const Episodes = ({ episodes }: EpisodesProps): React.ReactElement => {
   };
 
   return (
-    <EpisodesStyled className="episodes">
+    <EpisodesMenuStyled className="episodes">
       <Button
         text="Episodes"
         actionOnClick={toogleVisibilityEpisode}
@@ -41,8 +41,8 @@ const Episodes = ({ episodes }: EpisodesProps): React.ReactElement => {
           </li>
         ))}
       </ul>
-    </EpisodesStyled>
+    </EpisodesMenuStyled>
   );
 };
 
-export default Episodes;
+export default EpisodesMenu;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { themeColors, themeFontsSize } from "../../styles/themes/mainTheme";
 
-const EpisodesStyled = styled.article`
+const EpisodesMenuStyled = styled.article`
   max-width: 600px;
   width: 100%;
 
@@ -10,8 +10,8 @@ const EpisodesStyled = styled.article`
     color: ${themeColors.tertiary};
   }
 
-  .episodes {
-    &__episodes-list {
+  .items {
+    &__items-list {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(110px, 2fr));
       gap: 15px;
@@ -32,7 +32,7 @@ const EpisodesStyled = styled.article`
       }
     }
 
-    &__episode {
+    &__item {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -41,8 +41,20 @@ const EpisodesStyled = styled.article`
       background-color: ${themeColors.darkTransparent};
       box-shadow: inset 0px 0px 3px 1px ${themeColors.tertiaryTransparent};
       border-radius: 5px;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        background-color: #152502d9;
+        transform: scale(1.02);
+        transition: all 0.2s ease-in-out;
+      }
+
+      &:active {
+        transform: scale(0.95);
+        transition: all 0.1s ease-in-out;
+      }
     }
   }
 `;
 
-export default EpisodesStyled;
+export default EpisodesMenuStyled;
