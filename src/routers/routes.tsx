@@ -3,8 +3,9 @@ import { characterPaths, partialsPaths } from "../constants/paths/paths";
 import App from "../components/App/App";
 import { Suspense } from "react";
 import {
-  CharacterDetailsPage,
+  LazyCharacterDetailsPage,
   LazyCharactersPage,
+  LazyEpisodesPage,
 } from "./lazyPages/lazyPages";
 
 const routes: RouteObject[] = [
@@ -28,7 +29,15 @@ const routes: RouteObject[] = [
         path: `${characterPaths.characterDetailsId}`,
         element: (
           <Suspense>
-            <CharacterDetailsPage />
+            <LazyCharacterDetailsPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: `${partialsPaths.episode}`,
+        element: (
+          <Suspense>
+            <LazyEpisodesPage />
           </Suspense>
         ),
       },

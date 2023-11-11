@@ -19,7 +19,12 @@ describe("Given a FormSearch component", () => {
   describe("When its rendered", () => {
     test("Then it should show a 'search' imput", () => {
       renderWithProviders({
-        ui: <FormSearch onSearchChange={actionOnClick} />,
+        ui: (
+          <FormSearch
+            placeholder="Pilot, Lawnmower Dog..."
+            onSearchChange={actionOnClick}
+          />
+        ),
       });
 
       const searchImput = screen.getByLabelText(searchTextInput);
@@ -29,7 +34,12 @@ describe("Given a FormSearch component", () => {
 
     test("Then it should show a 'search-button' button", () => {
       renderWithProviders({
-        ui: <FormSearch onSearchChange={actionOnClick} />,
+        ui: (
+          <FormSearch
+            placeholder="Pilot, Lawnmower Dog..."
+            onSearchChange={actionOnClick}
+          />
+        ),
       });
 
       const searchButton = screen.getByRole("button", {
@@ -43,7 +53,12 @@ describe("Given a FormSearch component", () => {
   describe("When rendering and a user types 'Morty' in search input", () => {
     test("Then it should show 'morty' in the search input", async () => {
       renderWithProviders({
-        ui: <FormSearch onSearchChange={actionOnClick} />,
+        ui: (
+          <FormSearch
+            placeholder="Pilot, Lawnmower Dog..."
+            onSearchChange={actionOnClick}
+          />
+        ),
       });
 
       const searchImput = screen.getByLabelText(searchTextInput);
@@ -57,7 +72,12 @@ describe("Given a FormSearch component", () => {
   describe("And if you click on the search button", () => {
     test("Then it should call the actionOnClick function", async () => {
       renderWithProviders({
-        ui: <FormSearch onSearchChange={actionOnClick} />,
+        ui: (
+          <FormSearch
+            placeholder="Pilot, Lawnmower Dog..."
+            onSearchChange={actionOnClick}
+          />
+        ),
       });
 
       const searchButton = screen.getByRole("button", {
@@ -77,7 +97,12 @@ describe("Given a FormSearch component", () => {
       const newCharacterLength = 0;
 
       renderWithProviders({
-        ui: <FormSearch onSearchChange={actionOnClick} />,
+        ui: (
+          <FormSearch
+            placeholder="Ricky, Morty, Summer..."
+            onSearchChange={actionOnClick}
+          />
+        ),
       });
 
       const searchImput = screen.getByLabelText(searchTextInput);

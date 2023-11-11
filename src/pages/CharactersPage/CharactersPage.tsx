@@ -11,22 +11,14 @@ import { apiPaths } from "../../constants/paths/paths";
 
 const CharactersPage = (): React.ReactElement => {
   const isFirstRender = useRef(true);
-  const charactersData = useAppSelector((store) => store);
+  const charactersData = useAppSelector((state) => state);
   const {
     character: {
-      info: { next },
+      info: { next: nextPage },
       results,
     },
   } = charactersData;
   const dispatch = useAppDispatch();
-  const nextPage = useAppSelector(
-    ({
-      character: {
-        info: { next },
-      },
-    }) => next
-  );
-
   const { getCharacterList, loadCharacters } = useCharacter();
 
   useEffect(() => {
@@ -61,7 +53,10 @@ const CharactersPage = (): React.ReactElement => {
   return (
     <CharactersPageStyled>
       <h1>Characters</h1>
-      <FormSearch onSearchChange={handleSearchCharacters} />
+      <FormSearch
+        placeholder="Ricky, Morty, Summer..."
+        onSearchChange={handleSearchCharacters}
+      />
       {results.length <= 0 && (
         <span className="search-feedback">
           No characters matching your search were found
@@ -72,7 +67,7 @@ const CharactersPage = (): React.ReactElement => {
         <Button
           text="Show More"
           actionOnClick={handleClickToAction}
-          isDisabled={next === null}
+          isDisabled={nextPage === null}
         />
       )}
     </CharactersPageStyled>

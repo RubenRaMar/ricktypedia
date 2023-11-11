@@ -16,6 +16,12 @@ const PageStyled = styled.main`
     box-shadow: 0px 0px 11px 11px ${themeColors.darkTransparent};
     border-radius: 15px;
   }
+
+  .search-feedback {
+    margin-block-start: 10px;
+    background-color: ${themeColors.darkTransparent};
+    text-align: center;
+  }
 `;
 
 export default PageStyled;
