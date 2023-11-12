@@ -1,4 +1,4 @@
-import { screen } from "@testing-library/react";
+import { fireEvent, screen } from "@testing-library/react";
 import {
   characterMock,
   currentCharactersStateMock,
@@ -73,6 +73,25 @@ describe("Given a CharacterDetailsPage page", () => {
 
         expect(nameHeading).toBeInTheDocument();
       });
+    });
+  });
+
+  describe("When its rendered but not finding the character image ", () => {
+    test("Then it should show a image with the 'Silhouette of Riky and Morty representing that the image has not been found'", () => {
+      const altText = /character/i;
+      const errotAltText = `Silhouette of Riky and Morty representing that the image has not been found`;
+
+      renderWithProviders({
+        ui: <CharacterDetailsPage />,
+      });
+
+      const image = screen.getByAltText(altText);
+
+      fireEvent.error(image);
+
+      const errorImage = screen.getByAltText(errotAltText);
+
+      expect(errorImage).toBeInTheDocument();
     });
   });
 });

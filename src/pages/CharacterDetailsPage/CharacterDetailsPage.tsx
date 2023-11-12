@@ -59,6 +59,8 @@ const CharacterDetailsPage = (): React.ReactElement => {
         onError={({ currentTarget }) => {
           currentTarget.onerror = null;
           currentTarget.src = "/images/backgroundDetail.webp";
+          currentTarget.alt =
+            "Silhouette of Riky and Morty representing that the image has not been found";
         }}
       />
       <div className="character__data">
