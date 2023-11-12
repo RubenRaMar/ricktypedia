@@ -9,7 +9,7 @@ describe("Given a EpisodesMenu component", () => {
   const episodes = arisaCyborgCharacterMock.episode;
 
   describe("When its rendered", () => {
-    test("Then it shoul a button with de text 'Episodes'", () => {
+    test("Then it shoul a button with the text 'Episodes'", () => {
       renderWithProviders({
         ui: <EpisodesMenu episodes={episodes} />,
       });

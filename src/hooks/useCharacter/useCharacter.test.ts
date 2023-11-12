@@ -1,13 +1,12 @@
 import { renderHook } from "@testing-library/react";
+import { server } from "../../mocks/apiTest/node";
 import { wrapWithProviders } from "../../testUtils/renderWithProviders";
-
 import {
   characterMock,
   emptyCharactersStateMock,
   initialCharacterDataMock,
   newCharactersStateMock,
 } from "../../mocks/charactersMocks/charactersMocks";
-import { server } from "../../mocks/apiTest/node";
 import useCharacter from "./useCharacter";
 import { errorHandlers, handlers } from "../../mocks/apiTest/handlers";
 import { store } from "../../store";
@@ -31,7 +30,7 @@ describe("Given a getCharacterList custom hook", () => {
   });
 
   describe(`When it invoked with the path "${apiPaths.character}" but there is an error`, () => {
-    test("Then it should cancel the loading'", async () => {
+    test("Then it should cancel the loading", async () => {
       server.resetHandlers(...errorHandlers);
 
       const {
@@ -72,7 +71,7 @@ describe("Given a loadCharacters hook", () => {
   });
 
   describe(`When it invoked with the path "${apiPaths.character}/?name="  but there is an error`, () => {
-    test("", async () => {
+    test("Then it should return a empty character list", async () => {
       server.resetHandlers(...errorHandlers);
 
       const {
@@ -112,7 +111,7 @@ describe("Given a getCharacterById custom hook", () => {
   });
 
   describe(`When it invoked with the path "${characterPaths.characterDetails}/13753"  but there is an error`, () => {
-    test("", async () => {
+    test("Then it should cancel the loading", async () => {
       server.resetHandlers(...errorHandlers);
 
       const {

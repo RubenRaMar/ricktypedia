@@ -11,7 +11,8 @@ import { Provider } from "react-redux";
 import { RootState, setupStore, store } from "../store";
 import { ThemeProvider } from "styled-components";
 import mainTheme from "../styles/themes/mainTheme";
-import routes from "../routers/routes";
+import GlobalStyle from "../styles/GlobalStyle";
+import appRouter from "../routers/routers";
 
 interface RenderWithProvidersProps {
   ui: React.ReactElement;
@@ -25,13 +26,15 @@ export const renderWithProviders = ({
   preloadedRoutes,
 }: RenderWithProvidersProps) => {
   const testStore = preloadedState ? setupStore(preloadedState) : store;
-  const testRoutes = preloadedRoutes ?? routes;
-  const appTestRouter = createBrowserRouter(testRoutes);
+  const appTestRouter = preloadedRoutes
+    ? createBrowserRouter(preloadedRoutes)
+    : appRouter;
 
   const TestWrapperWithRouterProvider = (): React.ReactElement => {
     return (
       <ThemeProvider theme={mainTheme}>
         <Provider store={testStore}>
+          <GlobalStyle />
           <RouterProvider router={appTestRouter} />
         </Provider>
       </ThemeProvider>
@@ -44,6 +47,7 @@ export const renderWithProviders = ({
     return (
       <BrowserRouter>
         <ThemeProvider theme={mainTheme}>
+          <GlobalStyle />
           <Provider store={testStore}>{children}</Provider>
         </ThemeProvider>
       </BrowserRouter>
