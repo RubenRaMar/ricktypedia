@@ -1,6 +1,6 @@
 import { InfoStructure } from "../../data/info/types";
 
-export const infoDataMock: InfoStructure = {
+export const initialInfoDataMock: InfoStructure = {
   count: 0,
   pages: 0,
   next: "",

@@ -4,11 +4,16 @@ import NavegationMenuStyled from "./NavegationMenuStyled";
 
 const NavegationMenu = (): React.ReactElement => {
   return (
-    <NavegationMenuStyled>
-      <ul>
+    <NavegationMenuStyled className="navBar">
+      <ul className="navBar__links">
         <li>
           <NavLink to={`${partialsPaths.character}`} end>
-            Home
+            Characters
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to={`${partialsPaths.episode}`} end>
+            Episodes
           </NavLink>
         </li>
       </ul>

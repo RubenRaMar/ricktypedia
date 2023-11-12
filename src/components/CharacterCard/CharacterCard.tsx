@@ -46,14 +46,14 @@ const CharacterCard = ({
             <img
               src={`/images/${status.toLowerCase()}.webp`}
               alt={`The status of the character, ${status}`}
-              width="40"
-              height="40"
+              width="30"
+              height="30"
             />
             <img
               src={`/images/${gender.toLowerCase()}.webp`}
               alt={`The gender of the personage, ${gender}`}
-              width="40"
-              height="40"
+              width="30"
+              height="30"
             />
           </div>
         </div>

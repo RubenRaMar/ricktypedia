@@ -2,6 +2,10 @@ import styled from "styled-components";
 import { themeColors } from "../../styles/themes/mainTheme";
 
 const FormSearchStyled = styled.form`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
   input {
     width: 300px;
     height: 40px;
@@ -24,17 +28,9 @@ const FormSearchStyled = styled.form`
     }
   }
 
-  @media (max-width: 390px) {
-    width: 100%;
-
+  @media (max-width: 380px) {
     input {
-      max-width: 100%;
       width: 100%;
-      border-radius: 5px;
-    }
-
-    button {
-      display: none;
     }
   }
 `;
