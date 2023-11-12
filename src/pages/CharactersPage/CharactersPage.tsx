@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useState, useCallback } from "react";
 import CharactersPageStyled from "./CharactersPageStyled";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { showMoreCharactersActionCreator } from "../../store/characters/charactersSlice";
@@ -6,20 +6,18 @@ import useCharacter from "../../hooks/useCharacter/useCharacter";
 import CharacterList from "../../components/CharacterList/CharacterList";
 import FormSearch from "../../components/FormSearch/FormSearch";
 import Button from "../../components/Button/Button";
-import _debounce from "debounce";
 import { apiPaths } from "../../constants/paths/paths";
+import useItems from "../../hooks/useItems/useItems";
 
 const CharactersPage = (): React.ReactElement => {
-  const isFirstRender = useRef(true);
-  const charactersData = useAppSelector((state) => state);
-  const {
-    character: {
-      info: { next: nextPage },
-      results,
-    },
-  } = charactersData;
-  const dispatch = useAppDispatch();
+  const [isFirstRender, setIsFirstRender] = useState(true);
   const { getCharacterList, loadCharacters } = useCharacter();
+  const { handleItemsRealTimeSearch } = useItems();
+  const {
+    results,
+    info: { next: nextPage },
+  } = useAppSelector((state) => state.character);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     (async () => {
@@ -37,17 +35,20 @@ const CharactersPage = (): React.ReactElement => {
     }
   };
 
-  const handleSearchCharacters = useMemo(
-    () =>
-      _debounce(async (query: string) => {
-        if (isFirstRender.current) {
-          isFirstRender.current = false;
-          return;
-        }
+  const handleSearchCharacters = useCallback(
+    (query: string) => {
+      if (isFirstRender) {
+        setIsFirstRender(false);
+        return;
+      }
 
-        loadCharacters(`${apiPaths.character}/?name=${query}`);
-      }, 500),
-    [loadCharacters]
+      handleItemsRealTimeSearch({
+        query: query,
+        loadItems: loadCharacters,
+        url: apiPaths.character,
+      });
+    },
+    [handleItemsRealTimeSearch, isFirstRender, loadCharacters]
   );
 
   return (
