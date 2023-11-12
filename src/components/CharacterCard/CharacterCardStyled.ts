@@ -6,6 +6,7 @@ import {
 } from "../../styles/themes/mainTheme";
 
 const CharacterCardStyled = styled.article`
+  max-width: 350px;
   background-image: url(/images/backgroundCard.webp);
   background-size: cover;
   text-align: center;
