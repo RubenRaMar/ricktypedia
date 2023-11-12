@@ -4,12 +4,12 @@ import {
   CharacterStateStructure,
   CharacterStructure,
 } from "../../data/characters/types";
-import { infoData } from "../../data/info/info";
 import {
   characterMockFactory,
   charactersMocksFactory,
 } from "../factory/characterFactories/characterFactories";
 import { infoMockFactory } from "../factory/infoFactories/infoFactories";
+import { initialInfoDataMock } from "../infoMock/infoMock";
 
 export const initialCharacterDataMock: CharacterStructure = {
   id: 0,
@@ -35,8 +35,8 @@ export const initialCharacterDataMock: CharacterStructure = {
 export const characterMock = characterMockFactory();
 
 export const initialCharactersStateMock: CharacterStateStructure = {
-  info: infoData,
-  results: [initialCharacterDataMock],
+  info: initialInfoDataMock,
+  results: [],
   characterData: initialCharacterDataMock,
 };
 
@@ -47,7 +47,7 @@ export const currentCharactersStateMock: CharacterStateStructure = {
 };
 
 export const moreCharactersStateMock: CharacterApiStateStructure = {
-  info: infoData,
+  info: initialInfoDataMock,
   results: charactersMocksFactory(4),
 };
 

@@ -6,7 +6,7 @@ import { episodeReducer, loadEpisodesActionCreator } from "../episodeSlice";
 
 describe("Given a loadEpisodes mini reducer", () => {
   describe("When its invoked and receives a list of episodes and their info", () => {
-    test("then it should return a new list of episodes, their information and the current episode data", () => {
+    test("Then it should return a new list of episodes, their information and the current episode data", () => {
       const actionLoadEpisodes =
         loadEpisodesActionCreator(newEpisodesStateMock);
 

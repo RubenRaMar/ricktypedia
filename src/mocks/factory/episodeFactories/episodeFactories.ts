@@ -45,9 +45,6 @@ export const episodesStateMocksFactory = (
   data?: EpisodeDataStateStructure
 ) => episodeStateFactory.buildList(totalMocks, data);
 
-export const episodeApiMockFactory = (data?: EpisodeDataApiStructure) =>
-  episodeApiFactory.build(data);
-
 export const episodesApiMocksFactory = (
   totalMocks: number,
   data?: EpisodeDataApiStructure
