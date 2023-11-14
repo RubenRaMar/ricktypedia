@@ -28,13 +28,17 @@ export const initialEpisodeStateMock: EpisodesStateStructure = {
   info: initialInfoDataMock,
 };
 
-const episodesMock: EpisodeDataStateStructure[] = episodesStateMocksFactory(3);
-const resultsMock: EpisodeDataApiStructure[] = episodesApiMocksFactory(3);
-const infoMock: InfoStructure = infoMockFactory();
+export const episodesMock: EpisodeDataStateStructure[] =
+  episodesStateMocksFactory(3);
+export const resultsMock: EpisodeDataApiStructure[] =
+  episodesApiMocksFactory(3);
+export const episodeDataMock: EpisodeDataStateStructure =
+  episodeStateMockFactory();
+export const infoMock: InfoStructure = infoMockFactory();
 
 export const currentEpisodeStateMock: EpisodesStateStructure = {
   episodes: episodesMock,
-  episodeData: episodeStateMockFactory(),
+  episodeData: episodeDataMock,
   info: infoMock,
 };
 
