@@ -2,12 +2,12 @@ import EpisodeCardStyled from "./EpisodeCardStyled";
 import { EpisodeDataStateStructure } from "../../data/episodes/types";
 
 interface EpisodeCardProps {
-  character: EpisodeDataStateStructure;
+  episode: EpisodeDataStateStructure;
   position: number;
 }
 
 const EpisodeCard = ({
-  character: { airDate, episode, name },
+  episode: { airDate, episode, name },
   position,
 }: EpisodeCardProps): React.ReactElement => {
   return (
