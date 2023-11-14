@@ -30,11 +30,12 @@ export const initialEpisodeStateMock: EpisodesStateStructure = {
 
 const episodesMock: EpisodeDataStateStructure[] = episodesStateMocksFactory(3);
 const resultsMock: EpisodeDataApiStructure[] = episodesApiMocksFactory(3);
+const episodeDataMock: EpisodeDataStateStructure = episodeStateMockFactory();
 const infoMock: InfoStructure = infoMockFactory();
 
 export const currentEpisodeStateMock: EpisodesStateStructure = {
   episodes: episodesMock,
-  episodeData: episodeStateMockFactory(),
+  episodeData: episodeDataMock,
   info: infoMock,
 };
 

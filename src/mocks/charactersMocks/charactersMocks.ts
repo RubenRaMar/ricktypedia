@@ -33,6 +33,8 @@ export const initialCharacterDataMock: CharacterStructure = {
 };
 
 export const characterMock = characterMockFactory();
+export const resultsMock = charactersMocksFactory(4);
+export const infoMock = infoMockFactory();
 
 export const initialCharactersStateMock: CharacterStateStructure = {
   info: initialInfoDataMock,
@@ -41,14 +43,14 @@ export const initialCharactersStateMock: CharacterStateStructure = {
 };
 
 export const currentCharactersStateMock: CharacterStateStructure = {
-  info: infoMockFactory(),
-  results: charactersMocksFactory(4),
+  info: infoMock,
+  results: resultsMock,
   characterData: characterMock,
 };
 
 export const moreCharactersStateMock: CharacterApiStateStructure = {
   info: initialInfoDataMock,
-  results: charactersMocksFactory(4),
+  results: resultsMock,
 };
 
 export const emptyCharactersStateMock: CharacterApiStateStructure = {
@@ -68,7 +70,7 @@ export const newCharactersStateMock: CharacterApiStateStructure = {
     next: apiPaths.character,
     prev: "",
   },
-  results: charactersMocksFactory(4),
+  results: resultsMock,
 };
 
 export const arisaCyborgCharacterMock: CharacterStructure = {
