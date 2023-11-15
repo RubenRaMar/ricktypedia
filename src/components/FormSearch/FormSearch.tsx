@@ -1,6 +1,6 @@
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import FormSearchStyled from "./FormSearchStyled";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import Button from "../Button/Button";
 
 interface SearchCharactersProps {
@@ -13,22 +13,33 @@ const FormSearch = ({
   placeholder,
 }: SearchCharactersProps): React.ReactElement => {
   const [nameToSearch, setNameToSearch] = useState("");
+  const actualSearch = useRef("");
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNameToSearch(event.target.value);
   };
+
+  const searchCharacters = useCallback(() => {
+    if (actualSearch.current === nameToSearch) {
+      return;
+    }
+
+    actualSearch.current = nameToSearch;
+
+    onSearchChange(nameToSearch);
+  }, [nameToSearch, onSearchChange]);
 
   const handleSearchCharactersSubmit = async (
     event: React.FormEvent<HTMLFormElement>
   ) => {
     event.preventDefault();
 
-    onSearchChange(nameToSearch);
+    searchCharacters();
   };
 
   useEffect(() => {
-    onSearchChange(nameToSearch);
-  }, [onSearchChange, nameToSearch]);
+    searchCharacters();
+  }, [searchCharacters]);
 
   return (
     <FormSearchStyled

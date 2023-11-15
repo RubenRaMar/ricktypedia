@@ -69,7 +69,7 @@ describe("Given a FormSearch component", () => {
     });
   });
 
-  describe("And if you click on the search button", () => {
+  describe("And click on the search button", () => {
     test("Then it should call the actionOnClick function", async () => {
       renderWithProviders({
         ui: (
@@ -80,9 +80,12 @@ describe("Given a FormSearch component", () => {
         ),
       });
 
+      const searchImput = screen.getByLabelText(searchTextInput);
       const searchButton = screen.getByRole("button", {
         name: searchTextButton,
       });
+
+      await userEvent.type(searchImput, expectText);
 
       await userEvent.click(searchButton);
 
@@ -106,12 +109,11 @@ describe("Given a FormSearch component", () => {
       });
 
       const searchImput = screen.getByLabelText(searchTextInput);
-
-      await userEvent.type(searchImput, expectText);
-
       const searchButton = screen.getByRole("button", {
         name: searchTextButton,
       });
+
+      await userEvent.type(searchImput, expectText);
 
       await userEvent.click(searchButton);
 
