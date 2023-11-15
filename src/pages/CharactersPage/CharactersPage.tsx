@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useCallback } from "react";
 import CharactersPageStyled from "./CharactersPageStyled";
 import { useAppDispatch, useAppSelector } from "../../store";
 import { showMoreCharactersActionCreator } from "../../store/characters/charactersSlice";
@@ -10,7 +10,6 @@ import { apiPaths } from "../../constants/paths/paths";
 import useItems from "../../hooks/useItems/useItems";
 
 const CharactersPage = (): React.ReactElement => {
-  const [isFirstRender, setIsFirstRender] = useState(true);
   const { getCharacterList, loadCharacters } = useCharacter();
   const { handleItemsRealTimeSearch } = useItems();
   const {
@@ -37,18 +36,13 @@ const CharactersPage = (): React.ReactElement => {
 
   const handleSearchCharacters = useCallback(
     (query: string) => {
-      if (isFirstRender) {
-        setIsFirstRender(false);
-        return;
-      }
-
       handleItemsRealTimeSearch({
         query: query,
         loadItems: loadCharacters,
         url: apiPaths.character,
       });
     },
-    [handleItemsRealTimeSearch, isFirstRender, loadCharacters]
+    [handleItemsRealTimeSearch, loadCharacters]
   );
 
   return (
