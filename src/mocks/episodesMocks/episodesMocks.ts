@@ -14,20 +14,6 @@ import {
 import { infoMockFactory } from "../factory/infoFactories/infoFactories";
 import { initialInfoDataMock } from "../infoMock/infoMock";
 
-export const initialEpisodeStateMock: EpisodesStateStructure = {
-  episodes: [],
-  episodeData: {
-    id: 0,
-    name: "",
-    airDate: "",
-    episode: "",
-    characters: [],
-    url: "",
-    created: "",
-  },
-  info: initialInfoDataMock,
-};
-
 export const episodesMock: EpisodeDataStateStructure[] =
   episodesStateMocksFactory(3);
 export const resultsMock: EpisodeDataApiStructure[] =
@@ -35,6 +21,22 @@ export const resultsMock: EpisodeDataApiStructure[] =
 export const episodeDataMock: EpisodeDataStateStructure =
   episodeStateMockFactory();
 export const infoMock: InfoStructure = infoMockFactory();
+
+export const initialEpisodeDataMock = {
+  id: 0,
+  name: "",
+  airDate: "",
+  episode: "",
+  characters: [],
+  url: "",
+  created: "",
+};
+
+export const initialEpisodeStateMock: EpisodesStateStructure = {
+  episodes: [],
+  episodeData: initialEpisodeDataMock,
+  info: initialInfoDataMock,
+};
 
 export const currentEpisodeStateMock: EpisodesStateStructure = {
   episodes: episodesMock,
