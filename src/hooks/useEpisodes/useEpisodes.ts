@@ -9,6 +9,8 @@ import {
   showLoadingActionCreator,
   hideLoadingActionCreator,
 } from "../../store/ui/uiSlice";
+import { loadEpisodesActionCreator } from "../../store/episodes/episodeSlice";
+import { initialEpisodesState } from "../../data/episodes/episodes";
 
 const useEpisodes = () => {
   const dispatch = useAppDispatch();
@@ -45,7 +47,26 @@ const useEpisodes = () => {
     [dispatch]
   );
 
-  return { getEpisodes };
+  const loadEpisodes = useCallback(
+    async (url: string) => {
+      const episodes = await getEpisodes(url);
+
+      if (url.includes("?name=") && !episodes) {
+        dispatch(loadEpisodesActionCreator(initialEpisodesState));
+
+        return;
+      }
+
+      if (!episodes) {
+        return;
+      }
+
+      dispatch(loadEpisodesActionCreator(episodes));
+    },
+    [dispatch, getEpisodes]
+  );
+
+  return { getEpisodes, loadEpisodes };
 };
 
 export default useEpisodes;

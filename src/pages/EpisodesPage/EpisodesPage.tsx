@@ -4,6 +4,7 @@ import { useAppDispatch } from "../../store";
 import useEpisodes from "../../hooks/useEpisodes/useEpisodes";
 import { apiPaths } from "../../constants/paths/paths";
 import { loadEpisodesActionCreator } from "../../store/episodes/episodeSlice";
+import EpisodesList from "../../components/EpisodesList/EpisodesList";
 
 const EpisodesPage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
@@ -24,6 +25,7 @@ const EpisodesPage = (): React.ReactElement => {
   return (
     <EpisodesPageStyled>
       <h1>Episodes</h1>
+      <EpisodesList />
     </EpisodesPageStyled>
   );
 };
