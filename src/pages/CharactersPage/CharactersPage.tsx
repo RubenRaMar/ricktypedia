@@ -10,13 +10,16 @@ import { apiPaths } from "../../constants/paths/paths";
 import useItems from "../../hooks/useItems/useItems";
 
 const CharactersPage = (): React.ReactElement => {
-  const { getCharacterList, loadCharacters } = useCharacter();
-  const { handleItemsRealTimeSearch } = useItems();
-  const {
-    results,
-    info: { next: nextPage },
-  } = useAppSelector((state) => state.character);
   const dispatch = useAppDispatch();
+  const { handleItemsRealTimeSearch } = useItems();
+  const { getCharacterList, loadCharacters } = useCharacter();
+  const {
+    character: {
+      info: { next: nextPage },
+      results: characters,
+    },
+    ui: { isLoading },
+  } = useAppSelector((state) => state);
 
   useEffect(() => {
     (async () => {
@@ -52,13 +55,13 @@ const CharactersPage = (): React.ReactElement => {
         placeholder="Ricky, Morty, Summer..."
         onSearchChange={handleSearchCharacters}
       />
-      {results.length <= 0 && (
+      {characters.length <= 0 && !isLoading && (
         <span className="search-feedback">
           No characters matching your search were found
         </span>
       )}
       <CharacterList />
-      {results.length > 0 && (
+      {characters.length > 0 && (
         <Button
           text="Show More"
           actionOnClick={handleClickToAction}

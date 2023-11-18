@@ -1,4 +1,4 @@
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import { renderWithProviders } from "../../testUtils/renderWithProviders";
 import CharactersPage from "./CharactersPage";
 import userEvent from "@testing-library/user-event";
@@ -26,7 +26,7 @@ describe("Given a CharactersPage page", () => {
       expect(heading).toBeInTheDocument();
     });
 
-    test(`And the heading with ${currentCharactersStateMock.results[0].name}'s name`, async () => {
+    test(`And a heading with ${currentCharactersStateMock.results[0].name}'s character name`, async () => {
       const expectedHeadingText = currentCharactersStateMock.results[0].name;
 
       renderWithProviders({
@@ -39,23 +39,6 @@ describe("Given a CharactersPage page", () => {
       });
 
       expect(heading).toBeInTheDocument();
-    });
-  });
-
-  describe("When its rendered but there aren't characters to show", () => {
-    test("Then it should show the text 'No characters matching your search were found'", async () => {
-      server.resetHandlers(...errorHandlers);
-
-      const text = "No characters matching your search were found";
-
-      renderWithProviders({
-        ui: <CharactersPage />,
-        preloadedState: { character: initialCharactersStateMock },
-      });
-
-      const textElement = screen.getByText(text);
-
-      expect(textElement).toBeInTheDocument();
     });
 
     test("And the 'Show More' button is disabled", () => {
@@ -77,7 +60,26 @@ describe("Given a CharactersPage page", () => {
     });
   });
 
-  describe("When it is rendered and the user clicks on the 'next' button", () => {
+  describe("And there aren't characters to show", () => {
+    test("Then it should show the text 'No characters matching your search were found'", async () => {
+      server.resetHandlers(...errorHandlers);
+
+      const text = "No characters matching your search were found";
+
+      renderWithProviders({
+        ui: <CharactersPage />,
+        preloadedState: {
+          character: initialCharactersStateMock,
+        },
+      });
+
+      const textElement = await screen.findByText(text);
+
+      await waitFor(() => expect(textElement).toBeInTheDocument());
+    });
+  });
+
+  describe("And the user clicks on the 'next' button", () => {
     test("Then it should call the function nextPage", async () => {
       const expectedNewCharacterLength = 8;
 
