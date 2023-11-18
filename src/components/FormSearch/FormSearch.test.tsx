@@ -69,7 +69,7 @@ describe("Given a FormSearch component", () => {
     });
   });
 
-  describe("And click on the search button", () => {
+  describe("And if user click on the search button", () => {
     test("Then it should call the actionOnClick function", async () => {
       renderWithProviders({
         ui: (

@@ -7,21 +7,17 @@ import {
 
 const EpisodeCardStyled = styled.article`
   max-width: 350px;
+  text-align: center;
   color: ${themeColors.dark};
   background-color: ${themeColors.darkGrey};
-
-  span {
-    color: ${themeColors.lightGrey};
-    font-family: ${themeTypography.secondary};
-    font-size: ${themeFontsSize.medium};
-  }
+  border: 1px solid #747a0547;
 
   .episode {
     &__title {
       display: flex;
       justify-content: center;
       align-items: center;
-      text-align: center;
+      min-height: 70px;
       padding: 10px 20px;
       font-size: ${themeFontsSize.medium};
       background-color: ${themeColors.primary};
@@ -33,40 +29,27 @@ const EpisodeCardStyled = styled.article`
       height: 267px;
     }
 
-    &__data {
+    &__data-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      color: ${themeColors.lightGrey};
+      font-family: ${themeTypography.secondary};
+      font-size: ${themeFontsSize.medium};
       padding: 20px;
-      padding-bottom: 0;
-      text-align: center;
     }
 
     &__name {
       display: block;
-      text-align: center;
-      padding-bottom: 5px;
-      border-bottom: 1px solid ${themeColors.secondaryTransparent};
+      padding-block-end: 5px;
+      border-block-end: 1px solid ${themeColors.secondaryTransparent};
     }
 
-    &__seasion-container {
+    &__data {
       display: flex;
       justify-content: space-around;
       gap: 20px;
-      padding-top: 10px;
-    }
-
-    &__air-container {
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-      padding: 20px;
-    }
-
-    &__air-title {
-      padding-bottom: 5px;
-      border-bottom: 1px solid ${themeColors.secondaryTransparent};
-    }
-
-    &__air-data {
-      padding-top: 10px;
+      padding-block-start: 10px;
     }
   }
 `;

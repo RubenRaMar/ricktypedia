@@ -1,24 +1,21 @@
 import styled from "styled-components";
 
-const CharacterListStyled = styled.ul`
+const ItemListStyled = styled.ul`
   display: grid;
   gap: 50px;
   padding-block: 70px;
 
-  @media (min-width: 650px) {
-    max-width: 1200px;
+  @media (min-width: 850px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (min-width: 1000px) {
-    max-width: 1300px;
-
+  @media (min-width: 1250px) {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @media (min-width: 1305px) {
+  @media (min-width: 1650px) {
     grid-template-columns: repeat(4, 1fr);
   }
 `;
 
-export default CharacterListStyled;
+export default ItemListStyled;

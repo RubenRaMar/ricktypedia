@@ -21,20 +21,18 @@ const EpisodeCard = ({
         height="388"
         loading={position ? "lazy" : "eager"}
       />
-      <div className="episode__data">
-        <span className="episode__name">Episode</span>
-        <div className="episode__seasion-container">
-          <span className="episode__seasion">
-            {`Seasion: ${episode.slice(1, 3)}`}
-          </span>
-          <span className="episode__number">
-            {`Episode: ${episode.slice(4, 6)}`}
-          </span>
+      <div className="episode__data-container">
+        <div className="episode__container">
+          <span className="episode__name">Episode</span>
+          <div className="episode__data">
+            <span>{`Seasion ${episode.slice(1, 3)}`}</span>
+            <span>{`Episode ${episode.slice(4, 6)}`}</span>
+          </div>
         </div>
-      </div>
-      <div className="episode__air-container">
-        <span className="episode__air-title">Air Data:</span>
-        <span className="episode__air-data">{airDate}</span>
+        <div className="episode__container">
+          <span className="episode__name">Air Data</span>
+          <span className="episode__data">{airDate}</span>
+        </div>
       </div>
     </EpisodeCardStyled>
   );

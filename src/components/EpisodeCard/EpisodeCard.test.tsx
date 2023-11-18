@@ -32,9 +32,9 @@ describe("Given a EpisodeCard componenet", () => {
     test(`And the ${episodeName} title in the heading`, () => {
       const expectedTexts = [
         "Episode",
-        "Air Data:",
-        `Seasion: ${episodeDataMock.episode.slice(1, 3)}`,
-        `Episode: ${episodeDataMock.episode.slice(4, 6)}`,
+        "Air Data",
+        `Seasion ${episodeDataMock.episode.slice(1, 3)}`,
+        `Episode ${episodeDataMock.episode.slice(4, 6)}`,
       ];
 
       renderWithProviders({
