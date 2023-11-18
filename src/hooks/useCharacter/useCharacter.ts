@@ -16,13 +16,13 @@ const useCharacter = () => {
   const dispatch = useAppDispatch();
 
   const getCharacterList = useCallback(
-    async (path: string): Promise<CharacterApiStateStructure | undefined> => {
+    async (url: string): Promise<CharacterApiStateStructure | undefined> => {
       try {
         dispatch(showLoadingActionCreator());
 
         const { data: characterState } = await axios.get<
           Promise<CharacterApiStateStructure>
-        >(path);
+        >(url);
 
         dispatch(hideLoadingActionCreator());
 
@@ -35,8 +35,8 @@ const useCharacter = () => {
   );
 
   const loadCharacters = useCallback(
-    async (path: string) => {
-      const characters = await getCharacterList(path);
+    async (url: string) => {
+      const characters = await getCharacterList(url);
 
       if (characters) {
         dispatch(loadCharactersActionCreator(characters));
@@ -51,7 +51,7 @@ const useCharacter = () => {
         head.insertBefore(preloadLink, firstChild);
       }
 
-      if (path.includes("?name=") && !characters) {
+      if (url.includes("?name=") && !characters) {
         dispatch(loadCharactersActionCreator(initialCharactersState));
       }
     },
