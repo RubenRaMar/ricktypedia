@@ -1,18 +1,13 @@
 import styled from "styled-components";
-import {
-  themeColors,
-  themeFontsSize,
-  themeTypography,
-} from "../../styles/themes/mainTheme";
+import { themeColors, themeTypography } from "../../styles/themes/mainTheme";
 
 const NavegationMenuStyled = styled.nav`
   font-family: ${themeTypography.secondary};
-  font-size: ${themeFontsSize.medium};
 
   .navBar {
     &__links {
       display: flex;
-      gap: 20px;
+      gap: 30px;
     }
   }
 

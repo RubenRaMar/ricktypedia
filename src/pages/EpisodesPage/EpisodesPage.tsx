@@ -1,30 +1,50 @@
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import EpisodesPageStyled from "./EpisodesPageStyled";
-import { useAppDispatch } from "../../store";
+import { useAppDispatch, useAppSelector } from "../../store";
 import useEpisodes from "../../hooks/useEpisodes/useEpisodes";
-import { apiPaths } from "../../constants/paths/paths";
-import { loadEpisodesActionCreator } from "../../store/episodes/episodeSlice";
+import { apiPaths, partialsPaths } from "../../constants/paths/paths";
 import EpisodesList from "../../components/EpisodesList/EpisodesList";
+import FormSearch from "../../components/FormSearch/FormSearch";
+import useItems from "../../hooks/useItems/useItems";
 
 const EpisodesPage = (): React.ReactElement => {
   const dispatch = useAppDispatch();
-  const { getEpisodes } = useEpisodes();
+  const { handleItemsRealTimeSearch } = useItems();
+  const { loadEpisodes } = useEpisodes();
+  const {
+    episode: { episodes },
+    ui: { isLoading },
+  } = useAppSelector((state) => state);
 
   useEffect(() => {
     (async () => {
-      const episodes = await getEpisodes(apiPaths.episode);
-
-      if (!episodes) {
-        return;
-      }
-
-      dispatch(loadEpisodesActionCreator(episodes));
+      loadEpisodes(partialsPaths.episode);
     })();
-  }, [dispatch, getEpisodes]);
+  }, [dispatch, loadEpisodes]);
+
+  const handleSearchEpisodes = useCallback(
+    (query: string) => {
+      handleItemsRealTimeSearch({
+        query: query,
+        loadItems: loadEpisodes,
+        url: apiPaths.episode,
+      });
+    },
+    [handleItemsRealTimeSearch, loadEpisodes]
+  );
 
   return (
     <EpisodesPageStyled>
       <h1>Episodes</h1>
+      <FormSearch
+        placeholder="Pilot, Lawnmower Dog..."
+        onSearchChange={handleSearchEpisodes}
+      />
+      {episodes.length <= 0 && !isLoading && (
+        <h3 className="search-feedback">
+          No episodes matching your search were found
+        </h3>
+      )}
       <EpisodesList />
     </EpisodesPageStyled>
   );
