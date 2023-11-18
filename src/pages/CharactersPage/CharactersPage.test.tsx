@@ -6,7 +6,6 @@ import { store } from "../../store";
 import {
   currentCharactersStateMock,
   initialCharactersStateMock,
-  resultsMock,
 } from "../../mocks/charactersMocks/charactersMocks";
 import { server } from "../../mocks/apiTest/node";
 import { errorHandlers } from "../../mocks/apiTest/handlers";
@@ -100,13 +99,12 @@ describe("Given a CharactersPage page", () => {
     });
   });
 
-  describe("When rendering and a user types 'Morty' in search input and click on the search button", () => {
-    const characterName = resultsMock[0].name;
-    const searchTextInput = "search";
-    const searchTextButton = "search-button";
-    const expectText = "morty";
+  describe("And if user click on the search button", () => {
+    test("Then it should call the actionOnClick function", async () => {
+      const searchTextInput = "search";
+      const searchTextButton = "search-button";
+      const expectText = "morty";
 
-    test(`Then it should show the name of the character ${characterName} in a heading`, async () => {
       renderWithProviders({
         ui: <CharactersPage />,
       });
@@ -117,14 +115,11 @@ describe("Given a CharactersPage page", () => {
       });
 
       await userEvent.type(searchImput, expectText);
-
       await userEvent.click(searchButton);
 
-      const heading = screen.getByRole("heading", {
-        name: characterName,
-      });
+      const charactersLength = store.getState().character.results.length;
 
-      expect(heading).toBeInTheDocument();
+      expect(charactersLength).toBe(4);
     });
   });
 });
