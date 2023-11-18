@@ -7,15 +7,26 @@ const episodeSlice = createSlice({
   name: "episode",
   reducers: {
     loadEpisodes: (
-      currentState,
+      currentEpisodeState,
       action: PayloadAction<NewEpisodesStateStructure>
     ) => ({
-      ...currentState,
+      ...currentEpisodeState,
       ...action.payload,
+    }),
+    showMoreEpisodes: (
+      currentEpisodeState,
+      action: PayloadAction<NewEpisodesStateStructure>
+    ) => ({
+      ...currentEpisodeState,
+      episodes: [...currentEpisodeState.episodes, ...action.payload.episodes],
+      info: action.payload.info,
     }),
   },
 });
 
-export const { loadEpisodes: loadEpisodesActionCreator } = episodeSlice.actions;
+export const {
+  loadEpisodes: loadEpisodesActionCreator,
+  showMoreEpisodes: showMoreEpisodesActionCreator,
+} = episodeSlice.actions;
 
 export const episodeReducer = episodeSlice.reducer;
