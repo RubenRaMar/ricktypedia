@@ -27,7 +27,7 @@ const CharactersPage = (): React.ReactElement => {
     })();
   }, [loadCharacters]);
 
-  const handleClickToAction = async () => {
+  const handleShowMoreCharacters = async () => {
     if (nextPage) {
       const characters = await getCharacterList(nextPage);
 
@@ -64,7 +64,7 @@ const CharactersPage = (): React.ReactElement => {
       {characters.length > 0 && (
         <Button
           text="Show More"
-          actionOnClick={handleClickToAction}
+          actionOnClick={handleShowMoreCharacters}
           isDisabled={nextPage === null}
         />
       )}
