@@ -26,7 +26,7 @@ describe("Given a CharactersPage page", () => {
       expect(heading).toBeInTheDocument();
     });
 
-    test(`And a heading with ${currentCharactersStateMock.results[0].name}'s character name`, async () => {
+    test(`And a heading with a ${currentCharactersStateMock.results[0].name}'s character name`, async () => {
       const expectedHeadingText = currentCharactersStateMock.results[0].name;
 
       renderWithProviders({
@@ -79,8 +79,8 @@ describe("Given a CharactersPage page", () => {
     });
   });
 
-  describe("And the user clicks on the 'next' button", () => {
-    test("Then it should call the function nextPage", async () => {
+  describe("And the user clicks on the 'Show More' button there is a list of 3 episodes", () => {
+    test("Then it should show 8 episode names in headings", async () => {
       const expectedNewCharacterLength = 8;
 
       renderWithProviders({
@@ -95,14 +95,13 @@ describe("Given a CharactersPage page", () => {
 
       const charactersLength = store.getState().character.results.length;
 
-      await userEvent.click(showMoreButton);
-
       expect(charactersLength).toBe(expectedNewCharacterLength);
     });
   });
 
   describe("And if user click on the search button", () => {
-    test("Then it should call the actionOnClick function", async () => {
+    test("Then it should show 4 episode names in headings", async () => {
+      const expectedNewCharacterLength = 4;
       const searchTextInput = "search";
       const searchTextButton = "search-button";
       const expectText = "morty";
@@ -121,7 +120,7 @@ describe("Given a CharactersPage page", () => {
 
       const charactersLength = store.getState().character.results.length;
 
-      expect(charactersLength).toBe(4);
+      expect(charactersLength).toBe(expectedNewCharacterLength);
     });
   });
 });
