@@ -10,9 +10,7 @@ const FilterSeasons = ({
   const handleSeasonFilter = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const season = event.target.value;
 
-    if (onFilterChange) {
-      onFilterChange(season);
-    }
+    onFilterChange(season);
   };
 
   return (
