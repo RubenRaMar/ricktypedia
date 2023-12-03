@@ -7,11 +7,12 @@ describe("Given a handleItemsRealTimeSearch function", () => {
   describe("When its invoked with an 'exemple' query, a mockLoadItems function and a url 'https://example'", () => {
     test("Then it should call the mockLoadItems function with a url 'https://example/?name=example'", async () => {
       const mockLoadItems = vi.fn();
-      const expectedUrl = "https://example/?name=example";
+      const expectedUrl = "https://example/?name=example&&episode=example";
       const itemsRealTimeSearch: HandleItemsRealTimeSearch = {
         query: "example",
         loadItems: mockLoadItems,
         url: "https://example",
+        episode: "example",
       };
 
       const {
