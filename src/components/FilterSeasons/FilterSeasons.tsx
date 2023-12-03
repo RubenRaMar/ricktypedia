@@ -15,8 +15,8 @@ const FilterSeasons = ({
 
   return (
     <FilterSeasonsStyled>
-      <select onChange={handleSeasonFilter}>
-        <option hidden>Seasons</option>
+      <select aria-label="selected-season" onChange={handleSeasonFilter}>
+        <option hidden>Choose a Season</option>
         <option value="">All seasons</option>
         <option value="S01">Season 1</option>
         <option value="S02">Season 2</option>
