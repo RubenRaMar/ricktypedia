@@ -2,6 +2,7 @@ import "styled-components";
 
 interface ColorsStructure {
   primary: string;
+  primaryTransparent: string;
   secondary: string;
   secondaryTransparent: string;
   tertiary: string;
