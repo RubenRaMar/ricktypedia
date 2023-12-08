@@ -5,7 +5,7 @@ import { IconDefinition } from "@fortawesome/fontawesome-common-types";
 
 interface ButtonProps {
   type?: "button" | "submit";
-  modifier?: ("small" | "medium" | "medium-expanded")[];
+  modifiers?: ("small" | "medium" | "medium-expanded")[];
   actionOnClick?: () => void;
   text?: string;
   icon?: IconDefinition;
@@ -15,7 +15,7 @@ interface ButtonProps {
 
 const Button = ({
   type = "button",
-  modifier,
+  modifiers,
   actionOnClick,
   icon,
   text,
@@ -27,15 +27,15 @@ const Button = ({
       aria-label={label}
       disabled={isDisabled}
       className={`button ${
-        modifier?.includes("small") ? "button--small" : ""
-      } ${modifier?.includes("medium") ? "button--medium" : ""} ${
-        modifier?.includes("medium-expanded") ? "button--medium-expanded" : ""
+        modifiers
+          ? modifiers.map((modifier) => "button--" + modifier).join(" ")
+          : ""
       }`}
       onClick={actionOnClick}
       type={type}
     >
       {text}
-      {icon && <FontAwesomeIcon icon={icon} />}
+      {icon && <FontAwesomeIcon className="down-arrow" icon={icon} />}
     </ButtonStyled>
   );
 };
