@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../store";
 import { showMoreCharactersActionCreator } from "../../store/characters/charactersSlice";
 import useCharacter from "../../hooks/useCharacter/useCharacter";
 import CharacterList from "../../components/CharacterList/CharacterList";
-import FormSearch from "../../components/FormSearch/FormSearch";
+import FormFilter from "../../components/FormFilter/FormFilter";
 import Button from "../../components/Button/Button";
 import { apiPaths } from "../../constants/paths/paths";
 import useItems from "../../hooks/useItems/useItems";
@@ -51,7 +51,7 @@ const CharactersPage = (): React.ReactElement => {
   return (
     <CharactersPageStyled>
       <h1>Characters</h1>
-      <FormSearch
+      <FormFilter
         placeholder="Ricky, Morty, Summer..."
         onSearchChange={handleSearchCharacters}
       />

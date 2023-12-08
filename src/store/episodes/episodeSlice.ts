@@ -13,6 +13,9 @@ const episodeSlice = createSlice({
       ...currentEpisodeState,
       ...action.payload,
     }),
+    clearEpisodes: () => ({
+      ...initialEpisodesState,
+    }),
     showMoreEpisodes: (
       currentEpisodeState,
       action: PayloadAction<NewEpisodesStateStructure>
@@ -27,6 +30,7 @@ const episodeSlice = createSlice({
 export const {
   loadEpisodes: loadEpisodesActionCreator,
   showMoreEpisodes: showMoreEpisodesActionCreator,
+  clearEpisodes: clearEpisodesActionCreator,
 } = episodeSlice.actions;
 
 export const episodeReducer = episodeSlice.reducer;

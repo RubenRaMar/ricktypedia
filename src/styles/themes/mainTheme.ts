@@ -4,6 +4,7 @@ import pixelToRem from "../functions/pixelToRem.js";
 const mainTheme: DefaultTheme = {
   colors: {
     primary: "#009a38",
+    primaryTransparent: "#009a38c7",
     secondary: "#d2dc00",
     secondaryTransparent: "#d2dc00de",
     tertiary: "#7cbd28",
