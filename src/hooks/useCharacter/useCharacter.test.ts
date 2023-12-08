@@ -10,7 +10,7 @@ import {
 import useCharacter from "./useCharacter";
 import { errorHandlers, handlers } from "../../mocks/apiTest/handlers";
 import { store } from "../../store";
-import { apiPaths, characterPaths } from "../../constants/paths/paths";
+import { apiPaths, itemsPaths } from "../../constants/paths/paths";
 
 describe("Given a getCharacterList custom hook", () => {
   describe(`When it invoked with the path "${apiPaths.character}"`, () => {
@@ -92,7 +92,7 @@ describe("Given a loadCharacters hook", () => {
 });
 
 describe("Given a getCharacterById custom hook", () => {
-  describe(`When it invoked with the url "${characterPaths.characterDetails}/13753"`, () => {
+  describe(`When it invoked with the url "${itemsPaths.characterDetails}/13753"`, () => {
     test("Then it should return a character", async () => {
       server.resetHandlers(...handlers);
 
@@ -110,7 +110,7 @@ describe("Given a getCharacterById custom hook", () => {
     });
   });
 
-  describe(`When it invoked with the path "${characterPaths.characterDetails}/13753"  but there is an error`, () => {
+  describe(`When it invoked with the path "${itemsPaths.characterDetails}/13753"  but there is an error`, () => {
     test("Then it should cancel the loading", async () => {
       server.resetHandlers(...errorHandlers);
 

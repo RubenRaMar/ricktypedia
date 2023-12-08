@@ -1,6 +1,6 @@
 import {
   ApiPathsStructure,
-  CharacterPathsStructure,
+  ItemsPathsStructure,
   PartialsPathsStructure,
 } from "./types";
 
@@ -19,7 +19,7 @@ export const apiPaths: ApiPathsStructure = {
   episode: `${apiUrl}${partialsPaths.episode}`,
 };
 
-export const characterPaths: CharacterPathsStructure = {
+export const itemsPaths: ItemsPathsStructure = {
   characterDetails: `${partialsPaths.character}${partialsPaths.details}`,
   characterDetailsId: `${partialsPaths.character}${partialsPaths.details}${partialsPaths.characterId}`,
   episodeDetails: `${partialsPaths.episode}${partialsPaths.details}`,

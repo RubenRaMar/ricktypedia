@@ -1,5 +1,5 @@
 import { RouteObject, Navigate } from "react-router-dom";
-import { characterPaths, partialsPaths } from "../constants/paths/paths";
+import { itemsPaths, partialsPaths } from "../constants/paths/paths";
 import App from "../components/App/App";
 import { Suspense } from "react";
 import {
@@ -26,7 +26,7 @@ const routes: RouteObject[] = [
         ),
       },
       {
-        path: `${characterPaths.characterDetailsId}`,
+        path: `${itemsPaths.characterDetailsId}`,
         element: (
           <Suspense>
             <LazyCharacterDetailsPage />

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import CharacterCardStyled from "./CharacterCardStyled";
-import { characterPaths } from "../../constants/paths/paths";
+import { itemsPaths } from "../../constants/paths/paths";
 import { CharacterStructure } from "../../data/characters/types";
 
 interface CharacterCardProps {
@@ -21,7 +21,7 @@ const CharacterCard = ({
 }: CharacterCardProps): React.ReactElement => {
   return (
     <CharacterCardStyled className="character">
-      <Link to={`${characterPaths.characterDetails}/${id}`}>
+      <Link to={`${itemsPaths.characterDetails}/${id}`}>
         <img
           width="277"
           height="382"
