@@ -17,7 +17,8 @@ const EpisodesMenuStyled = styled.article`
       gap: 15px;
       padding-inline: 10px;
       max-height: 0;
-      border: 0px solid ${themeColors.tertiary};
+      background-color: ${themeColors.darkGrey};
+      border: 0 solid ${themeColors.tertiary};
       overflow: hidden;
       transition: max-height 0.4s ease-in-out, padding 0.38s step-end,
         border 0.38s step-end, border-radius 0.38s step-end;
@@ -25,7 +26,6 @@ const EpisodesMenuStyled = styled.article`
       &--visible {
         max-height: 2000px;
         border-radius: 0 0 10px 10px;
-        border: 2px solid ${themeColors.tertiary};
         border-block-start: 0;
         padding-block: 10px;
         transition: max-height 0.4s ease-in-out;
@@ -37,7 +37,7 @@ const EpisodesMenuStyled = styled.article`
       justify-content: center;
       align-items: center;
       padding: 10px;
-      border: 2px solid ${themeColors.tertiary};
+      border: 1px solid ${themeColors.tertiary};
       background-color: ${themeColors.darkTransparent};
       box-shadow: inset 0px 0px 3px 1px ${themeColors.tertiaryTransparent};
       border-radius: 5px;

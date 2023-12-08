@@ -11,7 +11,7 @@ export interface ApiPathsStructure {
   episode: string;
 }
 
-export interface CharacterPathsStructure {
+export interface ItemsPathsStructure {
   characterDetails: string;
   characterDetailsId: string;
   episodeDetails: string;

@@ -33,7 +33,7 @@ describe("Given a EpisodeCard componenet", () => {
       const expectedTexts = [
         "Episode",
         "Air Data",
-        `Seasion ${episodeDataMock.episode.slice(1, 3)}`,
+        `Season ${episodeDataMock.episode.slice(1, 3)}`,
         `Episode ${episodeDataMock.episode.slice(4, 6)}`,
       ];
 

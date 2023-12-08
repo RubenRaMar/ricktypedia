@@ -13,7 +13,7 @@ const CharacterCardStyled = styled.article`
   padding: 5px;
   border-radius: 10px;
   color: ${themeColors.dark};
-  box-shadow: 0px 0px 6px 2px ${themeColors.secondaryTransparent};
+  box-shadow: 0px 0px 6px 2px ${themeColors.primaryTransparent};
 
   .character {
     &__name {

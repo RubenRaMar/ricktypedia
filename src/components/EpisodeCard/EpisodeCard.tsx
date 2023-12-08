@@ -25,7 +25,7 @@ const EpisodeCard = ({
         <div className="episode__container">
           <span className="episode__name">Episode</span>
           <div className="episode__data">
-            <span>{`Seasion ${episode.slice(1, 3)}`}</span>
+            <span>{`Season ${episode.slice(1, 3)}`}</span>
             <span>{`Episode ${episode.slice(4, 6)}`}</span>
           </div>
         </div>

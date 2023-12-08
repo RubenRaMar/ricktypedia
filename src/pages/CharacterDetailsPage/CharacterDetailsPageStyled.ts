@@ -5,25 +5,30 @@ import pixelToRem from "../../styles/functions/pixelToRem";
 
 const CharacterDetailsPageStyled = styled(PageStyled)`
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 400px;
+
+  .data-container {
+    width: 100%;
+    border: 1px solid #7cbd28c7;
+    border-radius: 0 0 5px 5px;
+    overflow: hidden;
+  }
 
   .character {
     &__image {
-      max-width: 600px;
+      max-width: 400px;
       width: 100%;
       height: 100%;
       object-fit: cover;
       border-radius: 5px 5px 0 0;
-      border: 2px solid ${themeColors.tertiary};
-      box-shadow: inset 0px 0px 6px 2px ${themeColors.tertiaryTransparent};
+      border: 1px solid ${themeColors.tertiaryTransparent};
     }
 
     &__data {
       display: flex;
       align-items: center;
-      background-color: ${themeColors.darkTransparent};
-      border: 2px solid ${themeColors.tertiary};
-      box-shadow: inset 0px 0px 3px 1px ${themeColors.tertiaryTransparent};
+      background-color: ${themeColors.darkGrey};
+      border-bottom: 1px solid ${themeColors.tertiaryTransparent};
       border-block-start: none;
       gap: 5px;
       max-width: 600px;

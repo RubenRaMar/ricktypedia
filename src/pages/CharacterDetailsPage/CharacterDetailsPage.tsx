@@ -6,6 +6,8 @@ import { useEffect } from "react";
 import useCharacter from "../../hooks/useCharacter/useCharacter";
 import { apiPaths } from "../../constants/paths/paths";
 import { loadCharacterByIdActionCreator } from "../../store/characters/charactersSlice";
+import { clearEpisodesActionCreator } from "../../store/episodes/episodeSlice";
+import { isUnknown } from "../../helpers/helpers";
 
 const CharacterDetailsPage = (): React.ReactElement => {
   const { id } = useParams();
@@ -20,8 +22,6 @@ const CharacterDetailsPage = (): React.ReactElement => {
       const character = await getCharacterById(`${apiPaths.character}/${id}`);
 
       if (character) {
-        dispatch(loadCharacterByIdActionCreator(character));
-
         const preloadLink = document.createElement("link");
         preloadLink.rel = "preload";
         preloadLink.as = "image";
@@ -30,8 +30,14 @@ const CharacterDetailsPage = (): React.ReactElement => {
         const head = document.head;
         const firstChild = head.firstChild;
         head.insertBefore(preloadLink, firstChild);
+
+        dispatch(loadCharacterByIdActionCreator(character));
       }
     })();
+
+    return () => {
+      dispatch(clearEpisodesActionCreator());
+    };
   }, [dispatch, getCharacterById, id]);
 
   const {
@@ -63,37 +69,52 @@ const CharacterDetailsPage = (): React.ReactElement => {
             "Silhouette of Riky and Morty representing that the image has not been found";
         }}
       />
-      <div className="character__data">
-        <span className="character__key">Gender</span>
-        <span className="character__value">{gender}</span>
+      <div className="data-container">
+        {isUnknown(gender) && (
+          <div className="character__data">
+            <span className="character__key">Gender</span>
+            <span className="character__value">{gender}</span>
+          </div>
+        )}
+        {isUnknown(status) && (
+          <div className="character__data">
+            <span className="character__key">Status</span>
+            <span className="character__value">{status}</span>
+          </div>
+        )}
+        {isUnknown(locationName) && (
+          <div className="character__data">
+            <span className="character__key">Location</span>
+            <span className="character__value">{locationName}</span>
+          </div>
+        )}
+        {isUnknown(species) && (
+          <div className="character__data">
+            <span className="character__key">Species</span>
+            <span className="character__value">{species}</span>
+          </div>
+        )}
+        {isUnknown(type) && (
+          <div className="character__data">
+            <span className="character__key">Type</span>
+            <span className="character__value">{type}</span>
+          </div>
+        )}
+        {isUnknown(created) && (
+          <div className="character__data">
+            <span className="character__key">Created</span>
+            <span className="character__value">{created.substring(0, 10)}</span>
+          </div>
+        )}
+
+        {isUnknown(originName) && (
+          <div className="character__data">
+            <span className="character__key">Origin</span>
+            <span className="character__value">{originName}</span>
+          </div>
+        )}
+        <EpisodesMenu episodes={episodes} />
       </div>
-      <div className="character__data">
-        <span className="character__key">Status</span>
-        <span className="character__value">{status}</span>
-      </div>
-      <div className="character__data">
-        <span className="character__key">Location</span>
-        <span className="character__value">{locationName}</span>
-      </div>
-      <div className="character__data">
-        <span className="character__key">Species</span>
-        <span className="character__value">{species}</span>
-      </div>
-      {type && (
-        <div className="character__data">
-          <span className="character__key">Type</span>
-          <span className="character__value">{type}</span>
-        </div>
-      )}
-      <div className="character__data">
-        <span className="character__key">Created</span>
-        <span className="character__value">{created.substring(0, 10)}</span>
-      </div>
-      <div className="character__data">
-        <span className="character__key">Origin</span>
-        <span className="character__value">{originName}</span>
-      </div>
-      <EpisodesMenu episodes={episodes} />
     </CharacterDetailsPageStyled>
   );
 };

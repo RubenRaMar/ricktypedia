@@ -16,6 +16,7 @@ const ButtonStyled = styled.button`
   &.button {
     .down-arrow {
       color: inherit;
+      transition: all 0.38s step-end;
     }
 
     &--small {
@@ -49,7 +50,8 @@ const ButtonStyled = styled.button`
 
     &--medium-expanded {
       .down-arrow {
-        color: ${themeColors.tertiaryTransparent};
+        transition: all 0.2s step-start;
+        rotate: 180deg;
       }
     }
 
