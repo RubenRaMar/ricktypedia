@@ -47,7 +47,7 @@ const SearchFilter = ({
         type="submit"
         actionOnClick={handleSearchItemsSubmit}
         icon={faMagnifyingGlass}
-        modifier={["small"]}
+        modifiers={["small"]}
         isDisabled={false}
       />
     </FilterStyled>

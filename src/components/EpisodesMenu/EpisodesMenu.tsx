@@ -21,7 +21,7 @@ const EpisodesMenu = ({ episodes }: EpisodesMenuProps): React.ReactElement => {
         text="Episodes"
         actionOnClick={toogleVisibilityEpisode}
         icon={faCaretDown}
-        modifier={isVisible ? ["medium", "medium-expanded"] : ["medium"]}
+        modifiers={isVisible ? ["medium", "medium-expanded"] : ["medium"]}
       />
 
       <ul

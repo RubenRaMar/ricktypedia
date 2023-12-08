@@ -14,6 +14,10 @@ const ButtonStyled = styled.button`
   box-shadow: inset 0px 0px 6px 2px ${themeColors.tertiaryTransparent};
 
   &.button {
+    .down-arrow {
+      color: inherit;
+    }
+
     &--small {
       font-weight: 100;
       box-shadow: none;
@@ -31,8 +35,9 @@ const ButtonStyled = styled.button`
       justify-content: space-between;
       width: 100%;
       height: fit-content;
-      border: 2px solid ${themeColors.tertiary};
-      box-shadow: inset 0px 0px 3px 1px ${themeColors.tertiaryTransparent};
+      border: none;
+      background-color: ${themeColors.darkGrey};
+      box-shadow: none;
       border-block-start: none;
       padding: 10px;
       font-size: ${pixelToRem(18)};
@@ -40,6 +45,12 @@ const ButtonStyled = styled.button`
       text-transform: capitalize;
       color: ${themeColors.light};
       border-radius: 0;
+    }
+
+    &--medium-expanded {
+      .down-arrow {
+        color: ${themeColors.tertiaryTransparent};
+      }
     }
 
     &:focus-visible {
