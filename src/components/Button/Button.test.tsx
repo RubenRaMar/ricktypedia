@@ -35,7 +35,7 @@ describe("Given a Button component", () => {
             isDisabled={false}
             actionOnClick={actionOnClick}
             text={expectedTextButton}
-            modifier={["small", "medium", "medium-expanded"]}
+            modifiers={["small", "medium", "medium-expanded"]}
           />
         ),
       });
