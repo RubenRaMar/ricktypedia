@@ -3,6 +3,7 @@ import { renderWithProviders } from "../../testUtils/renderWithProviders";
 import EpisodesPage from "./EpisodesPage";
 import {
   currentEpisodeStateMock,
+  episodesApiMock,
   initialEpisodeStateMock,
 } from "../../mocks/episodesMocks/episodesMocks";
 import { server } from "../../mocks/apiTest/node";
@@ -136,6 +137,86 @@ describe("Given a EpisodesPage page", () => {
       expect(newsHeadingsWithEpisodesNames.length).toBe(
         expectedNewEpisodesLength
       );
+    });
+  });
+
+  describe("And if the user select all-episodes in the filter", () => {
+    const characterName = episodesApiMock.results[0].name;
+
+    test(`Then it should shpw the heading with the ${characterName} character name`, async () => {
+      const seasonSelected = "selected-season";
+      const allSeasons = "All seasons";
+
+      renderWithProviders({
+        ui: <EpisodesPage />,
+        preloadedState: { episode: initialEpisodeStateMock },
+      });
+
+      const seasonOption = screen.getByRole("combobox", {
+        name: seasonSelected,
+      });
+
+      await userEvent.selectOptions(seasonOption, allSeasons);
+
+      const heading = screen.getByRole("heading", {
+        name: characterName,
+      });
+
+      expect(heading).toBeInTheDocument();
+    });
+  });
+
+  describe("And if the user select all-episodes in the filter", () => {
+    const characterName = episodesApiMock.results[0].name;
+
+    test(`Then it should show the heading with the ${characterName} character name`, async () => {
+      const seasonSelected = "selected-season";
+      const allSeasons = "All seasons";
+
+      renderWithProviders({
+        ui: <EpisodesPage />,
+        preloadedState: { episode: initialEpisodeStateMock },
+      });
+
+      const seasonOption = screen.getByRole("combobox", {
+        name: seasonSelected,
+      });
+
+      await userEvent.selectOptions(seasonOption, allSeasons);
+
+      const heading = screen.getByRole("heading", {
+        name: characterName,
+      });
+
+      expect(heading).toBeInTheDocument();
+    });
+  });
+
+  describe("And if the user select all-episodes in the filter but there is an error", () => {
+    const characterName = episodesApiMock.results[0].name;
+
+    test(`Then it not should show the heading with the ${characterName} character name`, async () => {
+      server.resetHandlers(...errorHandlers);
+
+      const seasonSelected = "selected-season";
+      const allSeasons = "All seasons";
+
+      renderWithProviders({
+        ui: <EpisodesPage />,
+        preloadedState: { episode: initialEpisodeStateMock },
+      });
+
+      const seasonOption = screen.getByRole("combobox", {
+        name: seasonSelected,
+      });
+
+      await userEvent.selectOptions(seasonOption, allSeasons);
+
+      const heading = screen.queryByRole("heading", {
+        name: characterName,
+      });
+
+      expect(heading).not.toBeInTheDocument();
     });
   });
 });

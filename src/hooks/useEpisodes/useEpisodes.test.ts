@@ -28,10 +28,8 @@ describe("Given getEpisodes function", () => {
   });
 
   describe(`When it invoked with the url "${apiPaths.episode} but there is an error"`, () => {
-    test("Then it should return a empty episode list", async () => {
+    test("Then it should return undefined", async () => {
       server.resetHandlers(...errorHandlers);
-
-      const expectedEpisodesLength = 0;
 
       const {
         result: {
@@ -39,11 +37,9 @@ describe("Given getEpisodes function", () => {
         },
       } = renderHook(() => useEpisodes(), { wrapper: wrapWithProviders });
 
-      await getEpisodes(apiPaths.episode);
+      const episodes = await getEpisodes(apiPaths.episode);
 
-      const episodesLength = store.getState().episode.episodes.length;
-
-      expect(episodesLength).toStrictEqual(expectedEpisodesLength);
+      expect(episodes).toBeUndefined();
     });
   });
 });
