@@ -7,7 +7,7 @@ import useCharacter from "../../hooks/useCharacter/useCharacter";
 import { apiPaths } from "../../constants/paths/paths";
 import { loadCharacterByIdActionCreator } from "../../store/characters/charactersSlice";
 import { clearEpisodesActionCreator } from "../../store/episodes/episodeSlice";
-import { isUnknown } from "../../helpers/helpers";
+import { getIsUnknownOrEmpty } from "../../helpers/helpers";
 
 const CharacterDetailsPage = (): React.ReactElement => {
   const { id } = useParams();
@@ -70,44 +70,44 @@ const CharacterDetailsPage = (): React.ReactElement => {
         }}
       />
       <div className="data-container">
-        {isUnknown(gender) && (
+        {getIsUnknownOrEmpty(gender) && (
           <div className="character__data">
             <span className="character__key">Gender</span>
             <span className="character__value">{gender}</span>
           </div>
         )}
-        {isUnknown(status) && (
+        {getIsUnknownOrEmpty(status) && (
           <div className="character__data">
             <span className="character__key">Status</span>
             <span className="character__value">{status}</span>
           </div>
         )}
-        {isUnknown(locationName) && (
+        {getIsUnknownOrEmpty(locationName) && (
           <div className="character__data">
             <span className="character__key">Location</span>
             <span className="character__value">{locationName}</span>
           </div>
         )}
-        {isUnknown(species) && (
+        {getIsUnknownOrEmpty(species) && (
           <div className="character__data">
             <span className="character__key">Species</span>
             <span className="character__value">{species}</span>
           </div>
         )}
-        {isUnknown(type) && (
+        {getIsUnknownOrEmpty(type) && (
           <div className="character__data">
             <span className="character__key">Type</span>
             <span className="character__value">{type}</span>
           </div>
         )}
-        {isUnknown(created) && (
+        {getIsUnknownOrEmpty(created) && (
           <div className="character__data">
             <span className="character__key">Created</span>
             <span className="character__value">{created.substring(0, 10)}</span>
           </div>
         )}
 
-        {isUnknown(originName) && (
+        {getIsUnknownOrEmpty(originName) && (
           <div className="character__data">
             <span className="character__key">Origin</span>
             <span className="character__value">{originName}</span>

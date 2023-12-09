@@ -30,33 +30,24 @@ export const renderWithProviders = ({
     ? createBrowserRouter(preloadedRoutes)
     : appRouter;
 
-  const TestWrapperWithRouterProvider = (): React.ReactElement => {
+  const TestWrapperWithBrowserRouter = ({
+    children,
+  }: PropsWithChildren): React.ReactElement => {
     return (
       <ThemeProvider theme={mainTheme}>
+        <GlobalStyle />
         <Provider store={testStore}>
-          <GlobalStyle />
-          <RouterProvider router={appTestRouter} />
+          {preloadedRoutes ? (
+            <RouterProvider router={appTestRouter} />
+          ) : (
+            <BrowserRouter>{children}</BrowserRouter>
+          )}
         </Provider>
       </ThemeProvider>
     );
   };
 
-  const TestWrapperWithBrowserRouter = ({
-    children,
-  }: PropsWithChildren): React.ReactElement => {
-    return (
-      <BrowserRouter>
-        <ThemeProvider theme={mainTheme}>
-          <GlobalStyle />
-          <Provider store={testStore}>{children}</Provider>
-        </ThemeProvider>
-      </BrowserRouter>
-    );
-  };
-
-  const TestWrapper = preloadedRoutes
-    ? TestWrapperWithRouterProvider
-    : TestWrapperWithBrowserRouter;
+  const TestWrapper = TestWrapperWithBrowserRouter;
 
   render(ui, { wrapper: TestWrapper });
 };

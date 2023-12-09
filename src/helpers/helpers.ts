@@ -1,2 +1,2 @@
-export const isUnknown = (data: string): boolean =>
-  data !== "unknown" && data !== "";
+export const getIsUnknownOrEmpty = (text: string): boolean =>
+  text !== "unknown" && text !== "";
