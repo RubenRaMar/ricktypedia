@@ -30,7 +30,7 @@ describe("Given a getCharacterList custom hook", () => {
   });
 
   describe(`When it invoked with the path "${apiPaths.character}" but there is an error`, () => {
-    test("Then it should cancel the loading", async () => {
+    test("Then it should retuun undefined", async () => {
       server.resetHandlers(...errorHandlers);
 
       const {
@@ -39,11 +39,9 @@ describe("Given a getCharacterList custom hook", () => {
         },
       } = renderHook(() => useCharacter(), { wrapper: wrapWithProviders });
 
-      await getCharacterList(apiPaths.character);
+      const characters = await getCharacterList(apiPaths.character);
 
-      const isLoading = store.getState().ui.isLoading;
-
-      expect(isLoading).toBeFalsy();
+      expect(characters).toBeUndefined();
     });
   });
 });
@@ -92,7 +90,9 @@ describe("Given a loadCharacters hook", () => {
 });
 
 describe("Given a getCharacterById custom hook", () => {
-  describe(`When it invoked with the url "${itemsPaths.characterDetails}/13753"`, () => {
+  const characterId = 13753;
+
+  describe(`When it invoked with the url "${itemsPaths.characterDetails}/${characterId}"`, () => {
     test("Then it should return a character", async () => {
       server.resetHandlers(...handlers);
 
@@ -104,14 +104,16 @@ describe("Given a getCharacterById custom hook", () => {
         },
       } = renderHook(() => useCharacter(), { wrapper: wrapWithProviders });
 
-      const characters = await getCharacterById(`${apiPaths.character}/13753`);
+      const character = await getCharacterById(
+        `${apiPaths.character}/${characterId}`
+      );
 
-      expect(characters).toStrictEqual(expectedNewCharacters);
+      expect(character).toStrictEqual(expectedNewCharacters);
     });
   });
 
-  describe(`When it invoked with the path "${itemsPaths.characterDetails}/13753"  but there is an error`, () => {
-    test("Then it should cancel the loading", async () => {
+  describe(`When it invoked with the path "${itemsPaths.characterDetails}/${characterId}"  but there is an error`, () => {
+    test("Then it should return undefined", async () => {
       server.resetHandlers(...errorHandlers);
 
       const {
@@ -120,11 +122,11 @@ describe("Given a getCharacterById custom hook", () => {
         },
       } = renderHook(() => useCharacter(), { wrapper: wrapWithProviders });
 
-      await getCharacterById(`${apiPaths.character}/13753`);
+      const character = await getCharacterById(
+        `${apiPaths.character}/${characterId}`
+      );
 
-      const isLoading = store.getState().ui.isLoading;
-
-      expect(isLoading).toBeFalsy();
+      expect(character).toBeUndefined();
     });
   });
 });
