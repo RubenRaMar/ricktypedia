@@ -1,5 +1,7 @@
 import axios from "axios";
 import {
+  EpisodeDataApiStructure,
+  EpisodeDataStructure,
   EpisodesApiStructure,
   NewEpisodesStateStructure,
 } from "../../data/episodes/types";
@@ -66,7 +68,33 @@ const useEpisodes = () => {
     [dispatch, getEpisodes]
   );
 
-  return { getEpisodes, loadEpisodes };
+  const getEpisodeById = async (
+    url: string
+  ): Promise<EpisodeDataStructure | undefined> => {
+    try {
+      dispatch(showLoadingActionCreator());
+
+      const { data: episode } = await axios.get<EpisodeDataApiStructure>(url);
+
+      const episodeData = {
+        id: episode.id,
+        name: episode.name,
+        episode: episode.episode.toLowerCase(),
+        airDate: episode.air_date,
+        characters: episode.characters,
+        url: episode.url,
+        created: episode.created,
+      };
+
+      dispatch(hideLoadingActionCreator());
+
+      return episodeData;
+    } catch {
+      dispatch(hideLoadingActionCreator());
+    }
+  };
+
+  return { getEpisodes, loadEpisodes, getEpisodeById };
 };
 
 export default useEpisodes;
