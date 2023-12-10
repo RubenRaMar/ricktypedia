@@ -4,7 +4,13 @@ import { renderWithProviders } from "../../testUtils/renderWithProviders";
 import EpisodeCard from "./EpisodeCard";
 
 describe("Given a EpisodeCard componenet", () => {
-  const episodeName = episodeDataMock.name;
+  const {
+    name: episodeName,
+    airDate: episodeAirDate,
+    episode: seasonAndEpisode,
+  } = episodeDataMock;
+  const episodeSeason = seasonAndEpisode.slice(1, 3);
+  const episode = seasonAndEpisode.slice(4, 6);
 
   describe(`When its rendered and receives the ${episodeName} episode`, () => {
     test(`Then it should show image of the 'Episode ${episodeName}'`, () => {
@@ -29,12 +35,11 @@ describe("Given a EpisodeCard componenet", () => {
       expect(heading).toBeInTheDocument();
     });
 
-    test(`And the ${episodeName} title in the heading`, () => {
+    test(`And the texts ${episodeSeason}, ${episode} and ${episodeAirDate}`, () => {
       const expectedTexts = [
-        "Episode",
-        "Air Data",
-        `Season ${episodeDataMock.episode.slice(1, 3)}`,
-        `Episode ${episodeDataMock.episode.slice(4, 6)}`,
+        `Season ${episodeSeason}`,
+        `Episode ${episode}`,
+        episodeAirDate,
       ];
 
       renderWithProviders({
