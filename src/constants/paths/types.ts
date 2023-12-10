@@ -3,7 +3,7 @@ export interface PartialsPathsStructure {
   character: string;
   episode: string;
   details: string;
-  characterId: string;
+  itemId: string;
 }
 
 export interface ApiPathsStructure {

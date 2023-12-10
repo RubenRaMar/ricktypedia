@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import "@fontsource/lexend";
 import "@fontsource/playpen-sans";
+import "@fontsource/playpen-sans/500.css";
 import { store } from "./store";
 import appRouter from "./routers/routers";
 import GlobalStyle from "./styles/GlobalStyle";

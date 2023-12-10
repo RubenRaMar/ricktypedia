@@ -3,6 +3,7 @@ import { themeColors, themeTypography } from "../../styles/themes/mainTheme";
 
 const NavegationMenuStyled = styled.nav`
   font-family: ${themeTypography.secondary};
+  font-size: 1.1rem;
 
   .navBar {
     &__links {

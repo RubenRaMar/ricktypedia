@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import Button from "../Button/Button";
 import EpisodesMenuStyled from "./EpisodesMenuStyled";
+import { itemsPaths } from "../../constants/paths/paths";
 
 interface EpisodesMenuProps {
   episodes: string[];
@@ -34,7 +35,7 @@ const EpisodesMenu = ({ episodes }: EpisodesMenuProps): React.ReactElement => {
             <Link
               aria-expanded={isVisible}
               className="episodes__episode"
-              to={episode}
+              to={`${itemsPaths.episodeDetails}/${episode.split("/").pop()}`}
             >
               {`Episode ${episode.split("/").pop()}`}
             </Link>

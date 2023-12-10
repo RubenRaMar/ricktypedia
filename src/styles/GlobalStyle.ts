@@ -14,9 +14,8 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     font-family: ${themeTypography.primary};
-    min-height: 100vh;
   }
-
+  
   body,
   h1,
   h2,
@@ -26,8 +25,10 @@ const GlobalStyle = createGlobalStyle`
   
   body {
     background-color: ${themeColors.dark};
-    background-image: url("/images/background.webp");
-    background-size: 500px;
+    background-image: url("/images/background.jpg");
+    background-size: contain;
+    backdrop-filter: brightness(0.1);
+    min-height: 100vh;
     color: ${themeColors.light};
     font-size: ${themeFontsSize.small};
   }
