@@ -1,8 +1,8 @@
 import EpisodeCardStyled from "./EpisodeCardStyled";
-import { EpisodeDataStateStructure } from "../../data/episodes/types";
+import { EpisodeDataStructure } from "../../data/episodes/types";
 
 interface EpisodeCardProps {
-  episode: EpisodeDataStateStructure;
+  episode: EpisodeDataStructure;
   position: number;
 }
 
