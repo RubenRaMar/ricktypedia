@@ -9,7 +9,7 @@ const EpisodeCardStyled = styled.article`
   max-width: 350px;
   text-align: center;
   color: ${themeColors.dark};
-  background-color: ${themeColors.darkGrey};
+  background-color: ${themeColors.darkTransparent};
   border: 1px solid #747a0547;
 
   .episode {
@@ -21,6 +21,7 @@ const EpisodeCardStyled = styled.article`
       padding: 10px 20px;
       font-size: ${themeFontsSize.medium};
       background-color: ${themeColors.primary};
+      border-bottom: 1px solid ${themeColors.darkGrey};
     }
 
     &__image {
@@ -32,24 +33,18 @@ const EpisodeCardStyled = styled.article`
     &__data-container {
       display: flex;
       flex-direction: column;
-      gap: 20px;
       color: ${themeColors.lightGrey};
       font-family: ${themeTypography.secondary};
       font-size: ${themeFontsSize.medium};
-      padding: 20px;
-    }
-
-    &__name {
-      display: block;
-      padding-block-end: 5px;
-      border-block-end: 1px solid ${themeColors.secondaryTransparent};
+      margin-top: -4px;
     }
 
     &__data {
       display: flex;
       justify-content: space-around;
       gap: 20px;
-      padding-block-start: 10px;
+      padding: 20px;
+      background-color: ${themeColors.darkTransparent};
     }
   }
 `;
