@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { themeColors, themeFontsSize } from "../../styles/themes/mainTheme";
 
 const EpisodesMenuStyled = styled.article`
-  max-width: 600px;
   width: 100%;
 
   svg {

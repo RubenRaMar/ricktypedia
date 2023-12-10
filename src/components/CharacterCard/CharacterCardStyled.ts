@@ -7,28 +7,24 @@ import {
 
 const CharacterCardStyled = styled.article`
   max-width: 350px;
-  background-image: url(/images/backgroundCard.webp);
-  background-size: cover;
   text-align: center;
-  padding: 5px;
-  border-radius: 10px;
   color: ${themeColors.dark};
-  box-shadow: 0px 0px 6px 2px ${themeColors.primaryTransparent};
+  border: 1px solid #747a0547;
 
   .character {
     &__name {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 66px;
-      padding: 6px 10px;
+      min-height: 70px;
+      padding: 10px 20px;
       font-size: ${themeFontsSize.medium};
-      background-color: ${themeColors.secondaryTransparent};
+      background-color: ${themeColors.primary};
+      border-bottom: 1px solid ${themeColors.darkGrey};
     }
 
     &__location {
       font-family: ${themeTypography.secondary};
-      margin-block: 15px;
     }
 
     &__location-image {
@@ -37,22 +33,20 @@ const CharacterCardStyled = styled.article`
 
     &__data {
       display: flex;
-      height: 143px;
       flex-direction: column;
       justify-content: space-between;
+      gap: 40px;
       font-weight: 600;
-      border-radius: 0 0 10px 10px;
-      padding: 10px;
-      padding-block-start: 8px;
-      background-color: ${themeColors.tertiaryTransparent};
+      padding: 15px;
+      margin-top: -3px;
+      background-color: ${themeColors.darkGrey};
+      color: ${themeColors.lightGrey};
     }
 
     &__image {
       width: 100%;
+      height: 300px;
       object-fit: cover;
-      height: 267px;
-      border-radius: 10px 10px 0 0;
-      box-shadow: 0px 0px 8px 1px #0000003b;
     }
 
     &__images-container {

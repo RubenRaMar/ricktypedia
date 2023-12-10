@@ -11,6 +11,7 @@ const FilterSeasonsStyled = styled(FilterStyled)`
     background-color: ${themeColors.dark};
     color: ${themeColors.lightGrey};
     font-size: 0.95rem;
+    border-radius: none;
   }
 `;
 

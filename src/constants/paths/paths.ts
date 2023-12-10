@@ -11,7 +11,7 @@ export const partialsPaths: PartialsPathsStructure = {
   character: "/character",
   episode: "/episode",
   details: "/details",
-  characterId: `/:id`,
+  itemId: `/:id`,
 };
 
 export const apiPaths: ApiPathsStructure = {
@@ -21,7 +21,7 @@ export const apiPaths: ApiPathsStructure = {
 
 export const itemsPaths: ItemsPathsStructure = {
   characterDetails: `${partialsPaths.character}${partialsPaths.details}`,
-  characterDetailsId: `${partialsPaths.character}${partialsPaths.details}${partialsPaths.characterId}`,
+  characterDetailsId: `${partialsPaths.character}${partialsPaths.details}${partialsPaths.itemId}`,
   episodeDetails: `${partialsPaths.episode}${partialsPaths.details}`,
-  episodeDetailsId: `${partialsPaths.episode}${partialsPaths.details}${partialsPaths.characterId}`,
+  episodeDetailsId: `${partialsPaths.episode}${partialsPaths.details}${partialsPaths.itemId}`,
 };

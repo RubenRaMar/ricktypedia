@@ -22,15 +22,15 @@ const CharacterCard = ({
   return (
     <CharacterCardStyled className="character">
       <Link to={`${itemsPaths.characterDetails}/${id}`}>
+        <h2 className="character__name">{name}</h2>
         <img
           width="277"
           height="382"
           className="character__image"
           src={image}
           alt={`Of the character ${name}`}
-          loading={position ? "lazy" : "eager"}
+          loading={position > 3 ? "lazy" : "eager"}
         />
-        <h2 className="character__name">{name}</h2>
         <div className="character__data">
           <span className="character__location">
             <img
