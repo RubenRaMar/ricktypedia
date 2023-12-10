@@ -3,6 +3,7 @@ import { initialCharactersState } from "../../data/characters/characters";
 import { initialCharacterDataMock } from "../../mocks/charactersMocks/charactersMocks";
 import {
   CharacterApiStateStructure,
+  CharacterStateStructure,
   CharacterStructure,
 } from "../../data/characters/types";
 
@@ -13,14 +14,14 @@ const characterSlice = createSlice({
     loadCharacters: (
       _currentCharacterState,
       action: PayloadAction<CharacterApiStateStructure>
-    ) => ({
+    ): CharacterStateStructure => ({
       ...action.payload,
       characterData: initialCharacterDataMock,
     }),
     showMoreCharacters: (
       currentCharacterState,
       action: PayloadAction<CharacterApiStateStructure>
-    ) => ({
+    ): CharacterStateStructure => ({
       ...currentCharacterState,
       results: [...currentCharacterState.results, ...action.payload.results],
       info: action.payload.info,
@@ -28,7 +29,7 @@ const characterSlice = createSlice({
     loadCharacterById: (
       currentCharacterState,
       action: PayloadAction<CharacterStructure>
-    ) => ({
+    ): CharacterStateStructure => ({
       ...currentCharacterState,
       characterData: action.payload,
     }),
