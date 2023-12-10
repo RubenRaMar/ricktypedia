@@ -1,4 +1,4 @@
-import { EpisodeDataStateStructure } from "../../../data/episodes/types";
+import { EpisodeDataStructure } from "../../../data/episodes/types";
 import {
   currentEpisodeStateMock,
   initialEpisodeDataMock,
@@ -9,8 +9,7 @@ describe("Given a clearEpisodes mini reducer", () => {
   describe("When its invoked", () => {
     test("Then it should return a new state with the reseted episodeData", () => {
       const actionclearEpisodes = clearEpisodesActionCreator();
-      const resetedEpisodesData: EpisodeDataStateStructure =
-        initialEpisodeDataMock;
+      const resetedEpisodesData: EpisodeDataStructure = initialEpisodeDataMock;
 
       const { episodeData } = episodeReducer(
         currentEpisodeStateMock,

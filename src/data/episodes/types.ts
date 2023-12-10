@@ -15,7 +15,7 @@ export interface EpisodesApiStructure {
   info: InfoStructure;
 }
 
-export interface EpisodeDataStateStructure {
+export interface EpisodeDataStructure {
   id: number;
   name: string;
   airDate: string;
@@ -26,10 +26,10 @@ export interface EpisodeDataStateStructure {
 }
 
 export interface NewEpisodesStateStructure {
-  episodes: EpisodeDataStateStructure[];
+  episodes: EpisodeDataStructure[];
   info: InfoStructure;
 }
 
 export interface EpisodesStateStructure extends NewEpisodesStateStructure {
-  episodeData: EpisodeDataStateStructure;
+  episodeData: EpisodeDataStructure;
 }
