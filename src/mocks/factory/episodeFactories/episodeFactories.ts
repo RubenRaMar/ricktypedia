@@ -2,10 +2,10 @@ import { Factory } from "fishery";
 import { faker } from "@faker-js/faker";
 import {
   EpisodeDataApiStructure,
-  EpisodeDataStateStructure,
+  EpisodeDataStructure,
 } from "../../../data/episodes/types";
 
-const episodeStateFactory = Factory.define<EpisodeDataStateStructure>(() => ({
+const episodeStateFactory = Factory.define<EpisodeDataStructure>(() => ({
   id: faker.number.int(),
   name: faker.person.firstName(),
   episode: faker.string.alpha({ length: 10 }),
@@ -37,15 +37,18 @@ const episodeApiFactory = Factory.define<EpisodeDataApiStructure>(() => ({
   url: faker.string.alpha({ length: 10 }),
 }));
 
-export const episodeStateMockFactory = (data?: EpisodeDataStateStructure) =>
+export const episodeStateMockFactory = (data?: EpisodeDataStructure) =>
   episodeStateFactory.build(data);
 
 export const episodesStateMocksFactory = (
   totalMocks: number,
-  data?: EpisodeDataStateStructure
+  data?: EpisodeDataStructure
 ) => episodeStateFactory.buildList(totalMocks, data);
 
 export const episodesApiMocksFactory = (
   totalMocks: number,
   data?: EpisodeDataApiStructure
 ) => episodeApiFactory.buildList(totalMocks, data);
+
+export const episodeDataApiMockFactory = (data?: EpisodeDataApiStructure) =>
+  episodeApiFactory.build(data);

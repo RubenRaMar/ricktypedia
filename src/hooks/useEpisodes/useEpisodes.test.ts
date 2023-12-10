@@ -3,7 +3,9 @@ import { apiPaths } from "../../constants/paths/paths";
 import useEpisodes from "./useEpisodes";
 import { wrapWithProviders } from "../../testUtils/renderWithProviders";
 import {
+  episodeDataApiMock,
   initialEpisodeDataMock,
+  newEpisodeDataMock,
   newEpisodesStateMock,
 } from "../../mocks/episodesMocks/episodesMocks";
 import { server } from "../../mocks/apiTest/node";
@@ -44,7 +46,7 @@ describe("Given getEpisodes function", () => {
   });
 });
 
-describe("Given a loadEpisodes hook", () => {
+describe("Given loadEpisodes function", () => {
   const episodesState: EpisodesStateStructure = {
     ...newEpisodesStateMock,
     episodeData: initialEpisodeDataMock,
@@ -84,5 +86,42 @@ describe("Given a loadEpisodes hook", () => {
 
       expect(episodeLength).toStrictEqual(initialEpisodesState.episodes.length);
     });
+  });
+});
+
+describe("Given getEpisodeById function", () => {
+  const expectedEpisodeData = episodeDataApiMock;
+  const episodeId = expectedEpisodeData.id;
+  const episodeUrl = `${apiPaths.episode}/${episodeId}`;
+
+  describe(`When its invoked and receives the ${episodeUrl} url`, () => {
+    test("When its receives a new episode data", async () => {
+      const {
+        result: {
+          current: { getEpisodeById },
+        },
+      } = renderHook(() => useEpisodes(), { wrapper: wrapWithProviders });
+
+      const episodeData = await getEpisodeById(episodeUrl);
+
+      expect(episodeData).toStrictEqual(newEpisodeDataMock);
+    });
+  });
+
+  describe(`When its invoked and receives the ${episodeUrl} url but there is an error`, () => {
+    test("When its receives undefined", async () => {
+      server.resetHandlers(...errorHandlers);
+
+      const {
+        result: {
+          current: { getEpisodeById },
+        },
+      } = renderHook(() => useEpisodes(), { wrapper: wrapWithProviders });
+
+      const episodeData = await getEpisodeById(episodeUrl);
+
+      expect(episodeData).toBeUndefined();
+    });
+    1;
   });
 });

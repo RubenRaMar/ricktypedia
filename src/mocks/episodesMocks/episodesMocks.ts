@@ -3,10 +3,11 @@ import {
   EpisodesStateStructure,
   EpisodesApiStructure,
   EpisodeDataApiStructure,
-  EpisodeDataStateStructure,
+  EpisodeDataStructure,
 } from "../../data/episodes/types";
 import { InfoStructure } from "../../data/info/types";
 import {
+  episodeDataApiMockFactory,
   episodeStateMockFactory,
   episodesApiMocksFactory,
   episodesStateMocksFactory,
@@ -14,12 +15,13 @@ import {
 import { infoMockFactory } from "../factory/infoFactories/infoFactories";
 import { initialInfoDataMock } from "../infoMock/infoMock";
 
-export const episodesMock: EpisodeDataStateStructure[] =
+export const episodesMock: EpisodeDataStructure[] =
   episodesStateMocksFactory(3);
-export const resultsMock: EpisodeDataApiStructure[] =
+export const resultsEpisodesMock: EpisodeDataApiStructure[] =
   episodesApiMocksFactory(3);
-export const episodeDataMock: EpisodeDataStateStructure =
-  episodeStateMockFactory();
+export const episodeDataApiMock: EpisodeDataApiStructure =
+  episodeDataApiMockFactory();
+export const episodeDataMock: EpisodeDataStructure = episodeStateMockFactory();
 export const infoMock: InfoStructure = infoMockFactory();
 
 export const initialEpisodeDataMock = {
@@ -45,7 +47,7 @@ export const currentEpisodeStateMock: EpisodesStateStructure = {
 };
 
 export const episodesApiMock: EpisodesApiStructure = {
-  results: resultsMock,
+  results: resultsEpisodesMock,
   info: infoMock,
 };
 
@@ -60,4 +62,14 @@ export const newEpisodesStateMock: NewEpisodesStateStructure = {
     created: episodeApiMock.created,
   })),
   info: episodesApiMock.info,
+};
+
+export const newEpisodeDataMock = {
+  id: episodeDataApiMock.id,
+  name: episodeDataApiMock.name,
+  episode: episodeDataApiMock.episode.toLowerCase(),
+  airDate: episodeDataApiMock.air_date,
+  characters: episodeDataApiMock.characters,
+  url: episodeDataApiMock.url,
+  created: episodeDataApiMock.created,
 };
