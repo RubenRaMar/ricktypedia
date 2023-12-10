@@ -24,7 +24,7 @@ export const episodeDataApiMock: EpisodeDataApiStructure =
 export const episodeDataMock: EpisodeDataStructure = episodeStateMockFactory();
 export const infoMock: InfoStructure = infoMockFactory();
 
-export const initialEpisodeDataMock = {
+export const initialEpisodeDataMock: EpisodeDataStructure = {
   id: 0,
   name: "",
   airDate: "",
@@ -64,7 +64,7 @@ export const newEpisodesStateMock: NewEpisodesStateStructure = {
   info: episodesApiMock.info,
 };
 
-export const newEpisodeDataMock = {
+export const newEpisodeDataMock: EpisodeDataStructure = {
   id: episodeDataApiMock.id,
   name: episodeDataApiMock.name,
   episode: episodeDataApiMock.episode.toLowerCase(),
